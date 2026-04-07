@@ -27,7 +27,7 @@ export default function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0b1426]">
+    <section className="relative flex flex-col justify-center overflow-hidden bg-[#0b1426]" style={{ minHeight: '100dvh' }}>
       {/* Animated gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
@@ -136,7 +136,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 hover:text-slate-400 transition-colors"
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 hover:text-slate-400 transition-colors"
       >
         <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Прокрутите</span>
         <ChevronDown className="w-5 h-5 animate-bounce" />

@@ -100,20 +100,17 @@ export default function Contacts() {
               );
             })}
 
-            {/* Map placeholder */}
-            <div className="rounded-2xl overflow-hidden border border-slate-100 h-48 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-                <p className="text-slate-500 text-sm font-medium">Троицк, Челябинская область</p>
-                <a
-                  href="https://yandex.ru/maps/?text=Троицк+Челябинская+область"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-600 text-xs font-semibold hover:text-sky-700 transition-colors mt-1 inline-block"
-                >
-                  Открыть на карте →
-                </a>
-              </div>
+            {/* Yandex Map */}
+            <div className="rounded-2xl overflow-hidden border border-slate-100 h-64">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=61.5685%2C54.0836&z=13&pt=61.5685%2C54.0836,pm2rdl&text=%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+                title="Карта — Троицк, Челябинская область"
+                style={{ display: 'block' }}
+              />
             </div>
           </motion.div>
 

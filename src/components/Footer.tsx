@@ -115,6 +115,18 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
           <p>© {new Date().getFullYear()} Технопарк 1219. Все права защищены.</p>
           <p>Троицк, Челябинская область, Россия</p>
+          <p className="text-slate-500">
+            Разработано студией{' '}
+            <a
+              href="https://datary-dev.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-sky-400 transition-colors"
+              style={{ fontFamily: "'Space Grotesk', 'Manrope', sans-serif", fontWeight: 500 }}
+            >
+              Datary
+            </a>
+          </p>
         </div>
       </div>
     </footer>
