@@ -10,18 +10,23 @@ export default function CTASection() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section ref={ref} className="relative overflow-hidden py-24 lg:py-32 bg-sky-600">
+    <section ref={ref} className="relative overflow-hidden py-24 lg:py-32 bg-gradient-to-br from-[#2F6FED] to-[#4A7FF0]">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-sky-500/40 rounded-full blur-[80px]" />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-sky-700/40 rounded-full blur-[80px]" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-[80px]" />
+        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-[#2B2F36]/20 rounded-full blur-[80px]" />
+
+        {/* Diagonal lines */}
+        <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent rotate-[10deg]" />
+        <div className="absolute top-0 right-[30%] w-px h-full bg-gradient-to-b from-transparent via-white/8 to-transparent -rotate-[12deg]" />
+
         {/* Grid */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-8"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
+              'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
           }}
         />
       </div>
@@ -33,7 +38,7 @@ export default function CTASection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
         >
           {/* Tag */}
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 border border-white/30 rounded-full text-white text-sm font-semibold mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 border border-white/25 rounded-lg text-white text-sm font-semibold mb-8">
             <Sparkles className="w-4 h-4" />
             Готовы к сотрудничеству?
           </span>
@@ -46,7 +51,7 @@ export default function CTASection() {
           </h2>
 
           {/* Sub */}
-          <p className="text-sky-100 text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-white/80 text-lg max-w-xl mx-auto mb-12 leading-relaxed">
             Хотите разместить производство, найти подрядчика или стать частью нашей команды?
             Оставьте заявку — мы ответим в течение дня.
           </p>
@@ -55,14 +60,14 @@ export default function CTASection() {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => scrollTo('contacts')}
-              className="group flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-sky-600 font-bold rounded-2xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(0,0,0,0.15)] text-base"
+              className="group flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#F5F7F9] text-[#2F6FED] font-bold rounded-lg transition-all duration-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] text-base"
             >
               Оставить заявку
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => scrollTo('contacts')}
-              className="px-8 py-4 bg-white/15 hover:bg-white/25 border border-white/40 text-white font-bold rounded-2xl transition-all duration-200 backdrop-blur-sm text-base"
+              className="px-8 py-4 bg-white/12 hover:bg-white/20 border border-white/30 text-white font-bold rounded-lg transition-all duration-200 backdrop-blur-sm text-base"
             >
               Связаться напрямую
             </button>
@@ -72,6 +77,3 @@ export default function CTASection() {
     </section>
   );
 }
-
-
-

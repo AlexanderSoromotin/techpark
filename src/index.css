@@ -1,8 +1,28 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap');
 @import "tailwindcss";
 
+/* ========================================
+   DESIGN SYSTEM — Технопарк 1219
+   Обновленная цветовая схема
+   ======================================== */
+
 @theme {
-  --color-primary: #0b1426;
+  /* Основные цвета */
+  --color-primary: #2B2F36;
+  --color-primary-dark: #1F2933;
+  --color-accent: #2F6FED;
+  --color-accent-light: #4A7FF0;
+  --color-steel: #6B7C8F;
+
+  /* Фоны */
+  --color-bg-light: #F5F7F9;
+  --color-bg-soft: #E6EEF8;
+  --color-border: #D9E1E8;
+
+  /* Текст */
+  --color-text: #1F2933;
+  --color-text-muted: #6B7C8F;
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -12,8 +32,13 @@
   body {
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: #f8fafc;
-    color: #1e293b;
+    background: #F5F7F9;
+    color: #1F2933;
+    letter-spacing: -0.01em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+    font-weight: 800;
   }
   button,
   [role='button'],
@@ -27,52 +52,165 @@
   }
 }
 
+/* ========================================
+   HERO SECTION — Diagonal Grid Pattern
+   ======================================== */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(2,132,199,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(2,132,199,0.07) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(135deg, rgba(47,111,237,0.04) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(47,111,237,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
+/* Diagonal lines pattern for direction/movement */
+.diagonal-pattern {
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 40px,
+    rgba(47,111,237,0.03) 40px,
+    rgba(47,111,237,0.03) 41px
+  );
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
 @keyframes blobFloat {
   0%,100% { transform: translate(0,0) scale(1); }
-  33%  { transform: translate(30px,-50px) scale(1.1); }
-  66%  { transform: translate(-20px,20px) scale(0.95); }
+  33%  { transform: translate(20px,-30px) scale(1.05); }
+  66%  { transform: translate(-15px,15px) scale(0.98); }
 }
-.blob-animate         { animation: blobFloat 12s ease-in-out infinite; }
-.blob-animate-delayed { animation: blobFloat 14s ease-in-out infinite 2s; }
+.blob-animate         { animation: blobFloat 15s ease-in-out infinite; }
+.blob-animate-delayed { animation: blobFloat 18s ease-in-out infinite 3s; }
 
-.card-hover { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease; }
-.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+/* Subtle pulse for accent elements */
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.pulse-subtle { animation: subtlePulse 2s ease-in-out infinite; }
+
+/* ========================================
+   CARDS & HOVER EFFECTS
+   ======================================== */
+.card-hover {
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(43,47,54,0.08), 0 4px 12px rgba(47,111,237,0.06);
+}
 
 .gallery-item { overflow: hidden; }
-.gallery-item .gallery-img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
-.gallery-item:hover .gallery-img { transform: scale(1.08); }
+.gallery-item .gallery-img { transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.gallery-item:hover .gallery-img { transform: scale(1.05); }
 
+/* ========================================
+   GRADIENT TEXT — New Brand Colors
+   ======================================== */
 .gradient-text {
-  background: linear-gradient(135deg, #0284c7, #0ea5e9);
+  background: linear-gradient(135deg, #2F6FED 0%, #4A7FF0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* ========================================
+   SECTION BADGE — Industrial Style
+   ======================================== */
 .section-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 16px;
-  background: rgba(2,132,199,0.1);
-  border: 1px solid rgba(2,132,199,0.22);
-  border-radius: 100px;
-  font-size: 12px; font-weight: 600; color: #0284c7;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(47,111,237,0.08);
+  border: 1px solid rgba(47,111,237,0.18);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2F6FED;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin-bottom: 16px;
 }
 
-.form-input { transition: border-color 0.2s, box-shadow 0.2s; }
-.form-input:focus { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2,132,199,0.14); outline: none; }
+/* ========================================
+   FORM INPUTS — Clean Industrial
+   ======================================== */
+.form-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.form-input:focus {
+  border-color: #2F6FED;
+  box-shadow: 0 0 0 3px rgba(47,111,237,0.12);
+  background-color: #fff;
+  outline: none;
+}
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+/* ========================================
+   BUTTONS — Primary Accent
+   ======================================== */
+.btn-primary {
+  background: linear-gradient(135deg, #2F6FED 0%, #4A7FF0 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(47,111,237,0.25);
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 16px rgba(47,111,237,0.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #2B2F36;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: #1F2933;
+}
+
+/* ========================================
+   SCROLLBAR — Subtle Industrial
+   ======================================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #E6EEF8; }
+::-webkit-scrollbar-thumb { background: #6B7C8F; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2F6FED; }
+
+/* ========================================
+   DECORATIVE ELEMENTS
+   ======================================== */
+.line-accent {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #2F6FED 0%, #4A7FF0 100%);
+  border-radius: 2px;
+}
+
+/* Diagonal corner accent */
+.corner-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, transparent 50%, rgba(47,111,237,0.08) 50%);
+}
+
+/* Section divider with direction */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #D9E1E8 20%, #D9E1E8 80%, transparent 100%);
+}
+
 
 

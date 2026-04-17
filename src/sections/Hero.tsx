@@ -27,31 +27,28 @@ export default function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="relative flex flex-col justify-center overflow-hidden bg-[#0b1426]" style={{ minHeight: '100dvh' }}>
-      {/* Animated gradient blobs */}
+    <section className="relative flex flex-col justify-center overflow-hidden bg-[#2B2F36]" style={{ minHeight: '100dvh' }}>
+      {/* Subtle gradient blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="blob-animate absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-[0.07]"
-          style={{ background: 'radial-gradient(circle, #0284c7 0%, transparent 70%)' }}
+          className="blob-animate absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.08]"
+          style={{ background: 'radial-gradient(circle, #2F6FED 0%, transparent 70%)' }}
         />
         <div
-          className="blob-animate-delayed absolute -bottom-48 -left-32 w-[500px] h-[500px] rounded-full opacity-[0.06]"
-          style={{ background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)' }}
-        />
-        <div
-          className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full opacity-[0.04]"
-          style={{ background: 'radial-gradient(circle, #0284c7 0%, transparent 70%)' }}
+          className="blob-animate-delayed absolute -bottom-48 -left-32 w-[400px] h-[400px] rounded-full opacity-[0.06]"
+          style={{ background: 'radial-gradient(circle, #4A7FF0 0%, transparent 70%)' }}
         />
       </div>
 
-      {/* Tech grid overlay */}
+      {/* Diagonal tech grid overlay */}
       <div className="hero-grid absolute inset-0 pointer-events-none" />
 
-      {/* Decorative diagonal lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
-        <div className="absolute top-0 left-1/4 w-px h-full bg-sky-500 rotate-[15deg] origin-top-left" />
-        <div className="absolute top-0 left-1/2 w-px h-full bg-sky-500 rotate-[8deg] origin-top-left" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-sky-500 -rotate-[12deg] origin-top-right" />
+      {/* Decorative diagonal lines - направленные формы */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-[20%] w-px h-full bg-gradient-to-b from-transparent via-[#2F6FED]/10 to-transparent rotate-[12deg] origin-top-left" />
+        <div className="absolute top-0 left-[40%] w-px h-full bg-gradient-to-b from-transparent via-[#2F6FED]/8 to-transparent rotate-[6deg] origin-top-left" />
+        <div className="absolute top-0 left-[60%] w-px h-full bg-gradient-to-b from-transparent via-[#2F6FED]/6 to-transparent -rotate-[8deg] origin-top-right" />
+        <div className="absolute top-0 right-[20%] w-px h-full bg-gradient-to-b from-transparent via-[#2F6FED]/10 to-transparent -rotate-[15deg] origin-top-right" />
       </div>
 
       {/* Main content */}
@@ -64,8 +61,8 @@ export default function Hero() {
         >
           {/* Badge */}
           <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/[0.07] backdrop-blur-sm border border-white/15 rounded-full text-sm text-slate-300 font-medium mb-8">
-              <span className="w-2 h-2 bg-sky-600 rounded-full animate-pulse" />
+            <span className="inline-flex items-center gap-2.5 px-4 py-2 bg-white/[0.06] backdrop-blur-sm border border-white/12 rounded-lg text-sm text-white/80 font-medium mb-8">
+              <span className="w-2 h-2 bg-[#2F6FED] rounded-full pulse-subtle" />
               Промышленный технопарк · Троицк, Челябинская область
             </span>
           </motion.div>
@@ -77,13 +74,13 @@ export default function Hero() {
           >
             Технопарк
             <br />
-            <span className="text-sky-600">1219</span>
+            <span className="bg-gradient-to-r from-[#2F6FED] to-[#4A7FF0] bg-clip-text text-transparent">1219</span>
           </motion.h1>
 
           {/* Subheading */}
           <motion.p
             variants={fadeUp}
-            className="text-lg sm:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed"
+            className="text-lg sm:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed"
           >
             Промышленный технопарк полного цикла.
             <br className="hidden sm:block" />
@@ -94,22 +91,23 @@ export default function Hero() {
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <button
               onClick={() => scrollTo('contacts')}
-              className="group flex items-center gap-2 px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(2,132,199,0.3)] text-base"
+              className="group flex items-center gap-2 px-8 py-4 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-bold rounded-lg transition-all duration-250 hover:shadow-[0_8px_30px_rgba(47,111,237,0.35)] text-base"
             >
               Стать резидентом
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-250 group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => scrollTo('residents')}
-              className="px-8 py-4 bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 text-white font-bold rounded-2xl transition-all duration-300 backdrop-blur-sm text-base"
+              className="px-8 py-4 bg-white/[0.08] hover:bg-white/[0.12] border border-white/15 text-white font-bold rounded-lg transition-all duration-250 backdrop-blur-sm text-base"
             >
               Найти производство
             </button>
             <button
               onClick={() => scrollTo('contacts')}
-              className="px-6 py-4 text-slate-400 hover:text-white font-medium transition-colors duration-200 text-base"
+              className="px-6 py-4 text-white/50 hover:text-white font-medium transition-colors duration-200 text-base flex items-center gap-1"
             >
-              Связаться →
+              Связаться
+              <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         </motion.div>
@@ -124,7 +122,7 @@ export default function Hero() {
           {statsData.map((s) => (
             <div key={s.label} className="text-center">
               <div className="text-3xl sm:text-4xl font-black text-white">{s.value}</div>
-              <div className="text-slate-500 text-sm mt-1 font-medium">{s.label}</div>
+              <div className="text-white/40 text-sm mt-1 font-medium">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -136,7 +134,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 hover:text-slate-400 transition-colors"
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/60 transition-colors"
       >
         <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">Прокрутите</span>
         <ChevronDown className="w-5 h-5 animate-bounce" />

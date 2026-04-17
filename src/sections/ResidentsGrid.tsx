@@ -10,8 +10,15 @@ export default function ResidentsGrid() {
   const navigate = useNavigate();
 
   return (
-    <section id="residents" ref={ref} className="bg-slate-50 py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="residents" ref={ref} className="bg-white py-24 lg:py-32 relative">
+      {/* Subtle directional lines */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px]" style={{
+          background: 'radial-gradient(circle at top right, rgba(47,111,237,0.05) 0%, transparent 60%)'
+        }} />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.div
@@ -20,19 +27,19 @@ export default function ResidentsGrid() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
           >
             <span className="section-badge inline-flex">Резиденты</span>
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-black text-[#1F2933] leading-[1.1] tracking-tight mb-4">
               Направления
               <br />
-              <span className="text-sky-600">производства</span>
+              <span className="bg-gradient-to-r from-[#2F6FED] to-[#4A7FF0] bg-clip-text text-transparent">производства</span>
             </h2>
-            <p className="text-slate-500 text-base leading-relaxed">
+            <p className="text-[#6B7C8F] text-base leading-relaxed">
               Девять производственных компаний под одной крышей. Нажмите на карточку, чтобы узнать больше.
             </p>
           </motion.div>
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {residents.map((r, i) => {
             return (
               <motion.article
@@ -44,46 +51,42 @@ export default function ResidentsGrid() {
                   ease: [0.22, 1, 0.36, 1] as [number,number,number,number],
                   delay: 0.1 + i * 0.07,
                 }}
-                className="card-hover group bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-pointer"
+                className="card-hover group bg-white rounded-xl border border-[#D9E1E8] overflow-hidden cursor-pointer"
                 onClick={() => navigate(`/resident/${r.slug}`)}
               >
                 {/* Photo header */}
-                <div className="relative h-44 overflow-hidden bg-slate-900">
+                <div className="relative h-44 overflow-hidden bg-[#2B2F36]">
                   <img
                     src={r.image}
                     alt={r.imageAlt}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105"
                   />
 
                   <div
                     className="absolute inset-0"
                     style={{
                       background:
-                        'linear-gradient(180deg, rgba(15,23,42,0.06) 0%, rgba(15,23,42,0.18) 44%, rgba(15,23,42,0.78) 100%)',
+                        'linear-gradient(180deg, rgba(43,47,54,0.05) 0%, rgba(43,47,54,0.15) 44%, rgba(43,47,54,0.75) 100%)',
                     }}
                   />
 
                   <div
-                    className="absolute inset-0 mix-blend-multiply opacity-65"
+                    className="absolute inset-0 mix-blend-multiply opacity-50"
                     style={{
                       background: `linear-gradient(135deg, ${r.gradientFrom}, ${r.gradientTo})`,
                     }}
                   />
 
-                  <div className="absolute inset-0 opacity-[0.14]"
+                  {/* Diagonal accent line */}
+                  <div className="absolute top-0 right-0 w-20 h-20 opacity-20"
                     style={{
-                      backgroundImage:
-                        'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.95) 0, transparent 18%), radial-gradient(circle at 78% 16%, rgba(255,255,255,0.8) 0, transparent 16%), linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-                      backgroundSize: '240px 240px, 220px 220px, 42px 42px, 42px 42px',
+                      background: 'linear-gradient(135deg, transparent 50%, rgba(47,111,237,0.4) 50%)',
                     }}
                   />
 
-                  <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-white/12 blur-2xl" />
-                  <div className="absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-white/10 blur-xl" />
-
                   <div className="absolute inset-x-0 bottom-0 z-10 p-5">
-                    <div className="mb-2 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm">
+                    <div className="mb-2 inline-flex rounded-md border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/90 backdrop-blur-sm">
                       {r.category}
                     </div>
                     <h3 className="text-lg font-bold leading-tight text-white drop-shadow-sm">
@@ -94,8 +97,8 @@ export default function ResidentsGrid() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <p className="text-slate-500 text-sm leading-relaxed mb-5">{r.description}</p>
-                  <button className="flex items-center gap-1.5 text-sky-600 hover:text-sky-700 font-semibold text-sm transition-colors group/btn">
+                  <p className="text-[#6B7C8F] text-sm leading-relaxed mb-5">{r.description}</p>
+                  <button className="flex items-center gap-1.5 text-[#2F6FED] hover:text-[#4A7FF0] font-semibold text-sm transition-colors group/btn">
                     Подробнее
                     <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
                   </button>
@@ -108,6 +111,3 @@ export default function ResidentsGrid() {
     </section>
   );
 }
-
-
-

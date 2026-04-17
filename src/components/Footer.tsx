@@ -8,20 +8,26 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-[#2B2F36] text-white/60 relative overflow-hidden">
+      {/* Diagonal accent lines */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-[15%] w-px h-full bg-gradient-to-b from-[#2F6FED]/10 via-transparent to-transparent rotate-[5deg]" />
+        <div className="absolute top-0 right-[25%] w-px h-full bg-gradient-to-b from-[#2F6FED]/8 via-transparent to-transparent -rotate-[8deg]" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-5">
+            <Link to="/" className="flex items-center gap-3 mb-5 group">
               <img
                 src="/logo.png"
                 alt="Логотип Технопарка 1219"
-                className="h-7 w-auto object-contain"
+                className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
               <div className="leading-tight">
-                <span className="text-white font-bold text-base block">Технопарк</span>
-                <span className="text-white font-bold text-base block -mt-[6px]">1219</span>
+                <span className="text-white font-bold text-base block tracking-tight">Технопарк</span>
+                <span className="text-white font-bold text-base block -mt-[5px] tracking-tight">1219</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6">
@@ -29,17 +35,17 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-sky-600 mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#2F6FED] mt-0.5 shrink-0" />
                 <span>Троицк, Челябинская область</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-sky-600 shrink-0" />
+                <Phone className="w-4 h-4 text-[#2F6FED] shrink-0" />
                 <a href="tel:+73519001219" className="hover:text-white transition-colors">
                   +7 (351) 900-12-19
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-sky-600 shrink-0" />
+                <Mail className="w-4 h-4 text-[#2F6FED] shrink-0" />
                 <a href="mailto:info@techpark1219.ru" className="hover:text-white transition-colors">
                   info@techpark1219.ru
                 </a>
@@ -63,7 +69,7 @@ export default function Footer() {
                 <li key={l.hash}>
                   <button
                     onClick={() => scrollTo(l.hash)}
-                    className="flex items-center gap-1 hover:text-sky-500 transition-colors"
+                    className="flex items-center gap-1 hover:text-[#2F6FED] transition-colors"
                   >
                     <ChevronRight className="w-3 h-3" />
                     {l.label}
@@ -83,7 +89,7 @@ export default function Footer() {
                 <li key={r.id}>
                   <Link
                     to={`/resident/${r.slug}`}
-                    className="flex items-center gap-1 hover:text-sky-500 transition-colors"
+                    className="flex items-center gap-1 hover:text-[#2F6FED] transition-colors"
                   >
                     <ChevronRight className="w-3 h-3" />
                     {r.name}
@@ -103,27 +109,27 @@ export default function Footer() {
             </p>
             <button
               onClick={() => scrollTo('contacts')}
-              className="w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-xl text-sm transition-all duration-200 hover:shadow-[0_0_20px_rgba(2,132,199,0.28)]"
+              className="w-full py-3 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-semibold rounded-lg text-sm transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.3)]"
             >
               Оставить заявку
             </button>
-            <div className="mt-8 pt-6 border-t border-slate-800">
+            <div className="mt-8 pt-6 border-t border-white/10">
               <p className="text-xs">Пн–Пт: 8:00–18:00</p>
               <p className="text-xs mt-1">Сб: 9:00–14:00</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
           <p>© {new Date().getFullYear()} Технопарк 1219. Все права защищены.</p>
           <p>Троицк, Челябинская область, Россия</p>
-          <p className="text-slate-500">
+          <p className="text-white/40">
             Разработано студией{' '}
             <a
               href="https://datary-dev.ru"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-300 hover:text-sky-400 transition-colors"
+              className="text-white/60 hover:text-[#2F6FED] transition-colors"
               style={{ fontFamily: "'Space Grotesk', 'Manrope', sans-serif", fontWeight: 500 }}
             >
               Datary
@@ -134,6 +140,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-
-
