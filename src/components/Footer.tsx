@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { Factory, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { residents } from '../data/residents';
 
 export default function Footer() {
@@ -14,12 +14,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-sky-600 rounded-xl flex items-center justify-center">
-                <Factory className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Логотип Технопарка 1219"
+                className="h-7 w-auto object-contain"
+              />
               <div className="leading-tight">
                 <span className="text-white font-bold text-base block">Технопарк</span>
-                <span className="text-sky-500 font-black text-base block -mt-0.5">1219</span>
+                <span className="text-white font-bold text-base block -mt-[6px]">1219</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6">
