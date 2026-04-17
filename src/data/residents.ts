@@ -11,6 +11,8 @@
   gradientFrom: string;
   gradientTo: string;
   iconName: string;
+  image: string;
+  imageAlt: string;
   phone?: string;
   email?: string;
   website?: string;
@@ -42,6 +44,8 @@ export const residents: Resident[] = [
     gradientFrom: '#2563eb',
     gradientTo: '#1e40af',
     iconName: 'Wrench',
+    image: 'https://images.unsplash.com/photo-1651954794374-f3c5fdd9c077?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Гидравлические рукава и промышленное оборудование в производственном цехе',
     phone: '+7 (351) 123-45-67',
     email: 'hydraulics@techpark1219.ru',
   },
@@ -70,6 +74,8 @@ export const residents: Resident[] = [
     gradientFrom: '#475569',
     gradientTo: '#334155',
     iconName: 'Settings',
+    image: 'https://media.istockphoto.com/id/1167176948/photo/machine-connection-joint.webp?a=1&b=1&s=612x612&w=0&k=20&c=nghsLilDFiaCrQYvUuGrKVLwoTeiyi1V1jYyvBKphZY=',
+    imageAlt: 'Карданный вал и балансировочный стенд в индустриальном интерьере',
     phone: '+7 (351) 123-45-68',
     email: 'driveshafts@techpark1219.ru',
   },
@@ -98,6 +104,8 @@ export const residents: Resident[] = [
     gradientFrom: '#64748b',
     gradientTo: '#334155',
     iconName: 'Building2',
+    image: 'https://png.pngtree.com/background/20250127/original/pngtree-3d-rendering-of-zinc-galvanized-wave-sheets-for-roof-picture-image_13277408.jpg',
+    imageAlt: 'Металлоконструкции, балки и сварочный участок в цехе',
     phone: '+7 (351) 123-45-69',
     email: 'metal@techpark1219.ru',
   },
@@ -126,6 +134,8 @@ export const residents: Resident[] = [
     gradientFrom: '#0284c7',
     gradientTo: '#0369a1',
     iconName: 'Package',
+    image: 'https://images.unsplash.com/photo-1605701249987-f0bb9b505d06?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Строительный крепёж, саморезы и производственная линия',
     phone: '+7 (351) 123-45-70',
     email: 'fasteners@techpark1219.ru',
   },
@@ -154,6 +164,8 @@ export const residents: Resident[] = [
     gradientFrom: '#0891b2',
     gradientTo: '#0e7490',
     iconName: 'Droplets',
+    image: 'https://media.istockphoto.com/id/1340088719/photo/the-male-driver-pours-antifreeze-into-the-tank-to-spray-the-windshield-during-a-snowstorm.webp?a=1&b=1&s=612x612&w=0&k=20&c=N4JXHLnOkv5-G-X1sYyzDa9U6QfZ1m-VS4eaRXlLkfk=',
+    imageAlt: 'Линия розлива автохимии с канистрами и лабораторным оборудованием',
     phone: '+7 (351) 123-45-71',
     email: 'chem@techpark1219.ru',
   },
@@ -182,6 +194,8 @@ export const residents: Resident[] = [
     gradientFrom: '#6366f1',
     gradientTo: '#3730a3',
     iconName: 'Printer',
+    image: 'https://images.unsplash.com/photo-1642969164999-979483e21601?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: '3D-принтеры и прототипы в современной аддитивной лаборатории',
     phone: '+7 (351) 123-45-72',
     email: '3dprint@techpark1219.ru',
   },
@@ -210,8 +224,10 @@ export const residents: Resident[] = [
     gradientFrom: '#0f766e',
     gradientTo: '#155e75',
     iconName: 'Home',
+    image: 'https://40futov.ru/bitrix/templates/veonix/assets/img/bg/first-screen.jpg',
+    imageAlt: 'Контейнерный дом на производственной площадке с модульными блоками',
     phone: '+7 (351) 123-45-73',
-    email: 'containers@techpark1219.ru',
+    email: 'dom@40futov.ru',
   },
   {
     id: '8',
@@ -238,6 +254,8 @@ export const residents: Resident[] = [
     gradientFrom: '#0284c7',
     gradientTo: '#0c4a6e',
     iconName: 'Beef',
+    image: 'https://images.unsplash.com/photo-1668887465493-c4b0351aea89?q=80&w=2099&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Современный пищевой цех для мясного производства и упаковки',
     phone: '+7 (351) 123-45-74',
     email: 'meat@techpark1219.ru',
   },
@@ -266,6 +284,8 @@ export const residents: Resident[] = [
     gradientFrom: '#0284c7',
     gradientTo: '#075985',
     iconName: 'Apple',
+    image: 'https://images.unsplash.com/photo-1569442130180-21e17d66074d?q=80&w=1377&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Натуральные фруктовые и овощные снеки на линии упаковки',
     phone: '+7 (351) 123-45-75',
     email: 'food@techpark1219.ru',
   },

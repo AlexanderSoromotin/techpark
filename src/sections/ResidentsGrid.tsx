@@ -1,16 +1,8 @@
 ﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import {
-  Wrench, Settings, Building2, Package, Droplets,
-  Printer, Home, Beef, Apple, ArrowRight,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { residents } from '../data/residents';
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Wrench, Settings, Building2, Package, Droplets,
-  Printer, Home, Beef, Apple,
-};
 
 export default function ResidentsGrid() {
   const ref = useRef<HTMLElement>(null);
@@ -42,7 +34,6 @@ export default function ResidentsGrid() {
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {residents.map((r, i) => {
-            const Icon = iconMap[r.iconName] ?? Wrench;
             return (
               <motion.article
                 key={r.id}
@@ -56,27 +47,53 @@ export default function ResidentsGrid() {
                 className="card-hover group bg-white rounded-2xl border border-slate-100 overflow-hidden cursor-pointer"
                 onClick={() => navigate(`/resident/${r.slug}`)}
               >
-                {/* Gradient header */}
-                <div
-                  className="h-36 flex items-center justify-center relative overflow-hidden"
-                  style={{
-                    background: `linear-gradient(135deg, ${r.gradientFrom}, ${r.gradientTo})`,
-                  }}
-                >
-                  {/* Decorative circles */}
-                  <div className="absolute -top-8 -right-8 w-28 h-28 bg-white/10 rounded-full" />
-                  <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-white/10 rounded-full" />
-                  <Icon className="w-12 h-12 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                {/* Photo header */}
+                <div className="relative h-44 overflow-hidden bg-slate-900">
+                  <img
+                    src={r.image}
+                    alt={r.imageAlt}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        'linear-gradient(180deg, rgba(15,23,42,0.06) 0%, rgba(15,23,42,0.18) 44%, rgba(15,23,42,0.78) 100%)',
+                    }}
+                  />
+
+                  <div
+                    className="absolute inset-0 mix-blend-multiply opacity-65"
+                    style={{
+                      background: `linear-gradient(135deg, ${r.gradientFrom}, ${r.gradientTo})`,
+                    }}
+                  />
+
+                  <div className="absolute inset-0 opacity-[0.14]"
+                    style={{
+                      backgroundImage:
+                        'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.95) 0, transparent 18%), radial-gradient(circle at 78% 16%, rgba(255,255,255,0.8) 0, transparent 16%), linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+                      backgroundSize: '240px 240px, 220px 220px, 42px 42px, 42px 42px',
+                    }}
+                  />
+
+                  <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-white/12 blur-2xl" />
+                  <div className="absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-white/10 blur-xl" />
+
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                    <div className="mb-2 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm">
+                      {r.category}
+                    </div>
+                    <h3 className="text-lg font-bold leading-tight text-white drop-shadow-sm">
+                      {r.name}
+                    </h3>
+                  </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                    {r.category}
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-sky-600 transition-colors">
-                    {r.name}
-                  </h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-5">{r.description}</p>
                   <button className="flex items-center gap-1.5 text-sky-600 hover:text-sky-700 font-semibold text-sm transition-colors group/btn">
                     Подробнее

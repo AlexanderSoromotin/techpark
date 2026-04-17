@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="180" y1="90" x2="1410" y2="810" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C4A6E"/>
+      <stop offset="0.54" stop-color="#0284C7"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1220 170) rotate(135) scale(620 360)">
+      <stop stop-color="#F0F9FF" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <g opacity="0.13" stroke="#E0F2FE">
+    <path d="M0 120H1600"/><path d="M0 300H1600"/><path d="M0 480H1600"/><path d="M0 660H1600"/>
+    <path d="M180 0V900"/><path d="M500 0V900"/><path d="M820 0V900"/><path d="M1140 0V900"/><path d="M1460 0V900"/>
+  </g>
+  <rect x="96" y="644" width="1408" height="112" rx="30" fill="#0F172A" fill-opacity="0.82"/>
+  <rect x="250" y="280" width="1100" height="250" rx="48" fill="#E2E8F0" fill-opacity="0.12" stroke="#E0F2FE" stroke-opacity="0.24" stroke-width="8"/>
+  <g transform="translate(350 320)">
+    <rect x="0" y="160" width="900" height="28" rx="14" fill="#CBD5E1"/>
+    <rect x="60" y="110" width="90" height="90" rx="22" fill="#F8FAFC"/>
+    <path d="M100 40V125" stroke="#E2E8F0" stroke-width="28" stroke-linecap="round"/>
+    <path d="M72 52H128" stroke="#E2E8F0" stroke-width="14" stroke-linecap="round"/>
+    <path d="M72 76H128" stroke="#E2E8F0" stroke-width="14" stroke-linecap="round"/>
+    <path d="M72 100H128" stroke="#E2E8F0" stroke-width="14" stroke-linecap="round"/>
+    <rect x="250" y="110" width="90" height="90" rx="22" fill="#F8FAFC"/>
+    <path d="M290 40V125" stroke="#E2E8F0" stroke-width="28" stroke-linecap="round"/>
+    <rect x="440" y="110" width="90" height="90" rx="22" fill="#F8FAFC"/>
+    <path d="M480 40V125" stroke="#E2E8F0" stroke-width="28" stroke-linecap="round"/>
+    <rect x="630" y="110" width="90" height="90" rx="22" fill="#F8FAFC"/>
+    <path d="M670 40V125" stroke="#E2E8F0" stroke-width="28" stroke-linecap="round"/>
+    <circle cx="820" cy="155" r="62" fill="#BAE6FD" fill-opacity="0.9"/>
+    <circle cx="820" cy="155" r="28" fill="#0C4A6E"/>
+  </g>
+</svg>
