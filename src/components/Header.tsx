@@ -41,46 +41,46 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <img
               src="/logo.png"
               alt="Логотип Технопарка 1219"
-              className="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
             />
             <div className="leading-tight">
-              <span className="text-white font-bold text-base block tracking-tight">Технопарк</span>
-              <span className="text-white font-bold text-base block -mt-[5px] tracking-tight">1219</span>
+              <span className="text-white font-bold text-sm sm:text-base block tracking-tight">Технопарк</span>
+              <span className="text-white font-bold text-sm sm:text-base block -mt-1 tracking-tight">1219</span>
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop nav - показываем с lg (1024px+) */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((l) => (
               <button
                 key={l.hash}
                 onClick={() => scrollTo(l.hash)}
-                className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#2F6FED] after:transition-all after:duration-200 hover:after:w-full"
+                className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#2F6FED] after:transition-all after:duration-200 hover:after:w-full whitespace-nowrap"
               >
                 {l.label}
               </button>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:block">
+          {/* CTA - показываем с lg (1024px+) */}
+          <div className="hidden lg:block shrink-0">
             <button
               onClick={() => scrollTo('contacts')}
-              className="px-5 py-2.5 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.35)]"
+              className="px-4 xl:px-5 py-2.5 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.35)] whitespace-nowrap"
             >
               Стать резидентом
             </button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger - показываем до lg */}
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200 shrink-0"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Меню"
           >
@@ -91,7 +91,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#2B2F36] border-t border-white/10 px-4 py-6 space-y-1">
+        <div className="lg:hidden bg-[#2B2F36] border-t border-white/10 px-4 py-6 space-y-1">
           {navLinks.map((l) => (
             <button
               key={l.hash}
@@ -114,6 +114,3 @@ export default function Header() {
     </header>
   );
 }
-
-
-

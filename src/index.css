@@ -23,6 +23,9 @@
   --color-text: #1F2933;
   --color-text-muted: #6B7C8F;
 
+  /* Кастомные размеры */
+  --spacing-18: 4.5rem;
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
