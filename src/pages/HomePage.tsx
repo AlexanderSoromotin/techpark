@@ -6,6 +6,7 @@ import ResidentsGrid from '../sections/ResidentsGrid';
 import WhyUs from '../sections/WhyUs';
 import Gallery from '../sections/Gallery';
 import ForWhom from '../sections/ForWhom';
+import Vacancies from '../sections/Vacancies';
 import CTASection from '../sections/CTASection';
 import Contacts from '../sections/Contacts';
 
@@ -20,6 +21,7 @@ export default function HomePage() {
         <WhyUs />
         <Gallery />
         <ForWhom />
+        <Vacancies />
         <CTASection />
         <Contacts />
       </main>

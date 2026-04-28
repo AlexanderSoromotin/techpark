@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ResidentPage from './pages/ResidentPage';
+import { ContactFormProvider } from './context/ContactFormContext';
 import './index.css';
 
 function ScrollRestorer() {
@@ -25,11 +26,13 @@ function ScrollRestorer() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollRestorer />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/resident/:slug" element={<ResidentPage />} />
-      </Routes>
+      <ContactFormProvider>
+        <ScrollRestorer />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/resident/:slug" element={<ResidentPage />} />
+        </Routes>
+      </ContactFormProvider>
     </BrowserRouter>
   );
 }

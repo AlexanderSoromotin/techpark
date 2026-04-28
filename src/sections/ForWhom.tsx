@@ -11,7 +11,7 @@ const segments = [
 		points: [
 			'Гидравлические рукава и карданные валы',
 			'Металлоконструкции любой сложности',
-			'Пищевое производство под заказ',
+			// 'Пищевое производство под заказ',
 		],
 		cta: 'Найти производителя',
 		hash: 'residents',
@@ -50,7 +50,7 @@ const segments = [
 			'Профессиональный рост',
 		],
 		cta: 'Смотреть вакансии',
-		hash: 'contacts',
+		hash: 'vacancies',
 		accentBg: 'bg-[#4A7FF0]',
 		lightBg: 'bg-[#E6EEF8]',
 		border: 'border-[#D9E1E8] hover:border-[#4A7FF0]/30',

@@ -1,6 +1,7 @@
-﻿import { useRef, useState } from 'react';
+﻿import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { useContactForm } from '../context/useContactForm';
 
 const contactInfo = [
 	{
@@ -34,6 +35,15 @@ export default function Contacts() {
 	const inView = useInView(ref, { once: true, margin: '-80px' });
 	const [sent, setSent] = useState(false);
 	const [form, setForm] = useState({ name: '', phone: '', message: '' });
+	const { prefillMessage, setPrefillMessage } = useContactForm();
+
+	// Подставляем сообщение из контекста (отклик на вакансию)
+	useEffect(() => {
+		if (prefillMessage) {
+			setForm((f) => ({ ...f, message: prefillMessage }));
+			setPrefillMessage('');
+		}
+	}, [prefillMessage, setPrefillMessage]);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();

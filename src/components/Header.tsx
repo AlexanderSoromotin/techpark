@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'Резиденты', hash: 'residents' },
   { label: 'Галерея', hash: 'gallery' },
   { label: 'Для кого', hash: 'for-whom' },
+  { label: 'Вакансии', hash: 'vacancies' },
   { label: 'Контакты', hash: 'contacts' },
 ];
 

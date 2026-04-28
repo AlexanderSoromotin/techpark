@@ -59,14 +59,14 @@ const galleryItems = [
 		gradient: 'from-[#2B2F36] to-[#4A7FF0]',
 		size: '',
 	},
-	{
-		id: 8,
-		label: 'Пищевой цех',
-		cat: 'Мясное производство',
-		image: 'https://www.mos.ru/upload/newsfeed/pressevents/NOV_4937.jpg',
-		gradient: 'from-[#1F2933] to-[#2F6FED]',
-		size: '',
-	},
+	// {
+	// 	id: 8,
+	// 	label: 'Пищевой цех',
+	// 	cat: 'Мясное производство',
+	// 	image: 'https://www.mos.ru/upload/newsfeed/pressevents/NOV_4937.jpg',
+	// 	gradient: 'from-[#1F2933] to-[#2F6FED]',
+	// 	size: '',
+	// },
 ];
 
 export default function Gallery() {
