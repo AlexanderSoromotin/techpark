@@ -23,7 +23,7 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Логотип Технопарка 1219"
-                className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                className="h-8 w-auto object-contain"
               />
               <div className="leading-tight">
                 <span className="text-white font-bold text-base block tracking-tight">Технопарк</span>
