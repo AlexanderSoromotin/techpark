@@ -11,7 +11,6 @@ export default function Vacancies() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [expanded, setExpanded] = useState(false);
   const { setPrefillMessage } = useContactForm();
-
   const handleApply = (v: typeof vacancies[number]) => {
     setPrefillMessage(
       `Здравствуйте! Хочу откликнуться на вакансию «${v.position}» (${v.residentName}, ${v.residentCategory}).`
