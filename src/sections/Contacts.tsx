@@ -2,6 +2,7 @@
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { useContactForm } from '../context/useContactForm';
+import { submitFeedback } from '../services/feedbackApi';
 
 const contactInfo = [
 	{
@@ -33,22 +34,51 @@ const contactInfo = [
 export default function Contacts() {
 	const ref = useRef<HTMLElement>(null);
 	const inView = useInView(ref, { once: true, margin: '-80px' });
-	const [sent, setSent] = useState(false);
-	const [form, setForm] = useState({ name: '', phone: '', message: '' });
+
+	type Status = 'idle' | 'loading' | 'success' | 'error';
+	const [status, setStatus] = useState<Status>('idle');
+	const [errorMsg, setErrorMsg] = useState('');
+	const [form, setForm] = useState({ name: '', contact: '', message: '' });
+	const [errors, setErrors] = useState({ name: '', contact: '', message: '' });
 	const { prefillMessage, setPrefillMessage } = useContactForm();
 
-	// Подставляем сообщение из контекста (отклик на вакансию)
+	// Подставляем сообщение из контекста (отклик на вакансию) и сразу сбрасываем
 	useEffect(() => {
-		if (prefillMessage) {
-			setForm((f) => ({ ...f, message: prefillMessage }));
-			setPrefillMessage('');
-		}
+		if (!prefillMessage) return;
+		// Объединяем в один рендер через функциональное обновление
+		setForm((f) => ({ ...f, message: prefillMessage }));
+		// Откладываем сброс контекста, чтобы не вызывать каскадный рендер
+		const id = setTimeout(() => setPrefillMessage(''), 0);
+		return () => clearTimeout(id);
 	}, [prefillMessage, setPrefillMessage]);
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const validate = () => {
+		const e = { name: '', contact: '', message: '' };
+		if (!form.name.trim()) e.name = 'Введите ваше имя';
+		if (!form.contact.trim()) e.contact = 'Введите телефон или email';
+		if (form.message.trim().length < 10) e.message = 'Сообщение должно быть не короче 10 символов';
+		setErrors(e);
+		return !e.name && !e.contact && !e.message;
+	};
+
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		// In production: send to backend / CRM
-		setSent(true);
+		if (!validate()) return;
+
+		setStatus('loading');
+		setErrorMsg('');
+		try {
+			await submitFeedback(form);
+			setStatus('success');
+			setForm({ name: '', contact: '', message: '' });
+		} catch (err: unknown) {
+			setStatus('error');
+			setErrorMsg(
+				err instanceof Error
+					? err.message
+					: 'Не удалось отправить сообщение. Попробуйте позже.'
+			);
+		}
 	};
 
 	return (
@@ -151,88 +181,88 @@ export default function Contacts() {
 							delay: 0.2,
 						}}
 					>
-						{sent ? (
-							<div className="h-full flex flex-col items-center justify-center text-center p-12 rounded-xl bg-[#E6EEF8] border border-[#2F6FED]/20">
-								<div className="w-16 h-16 bg-[#2F6FED]/15 rounded-xl flex items-center justify-center mb-4">
-									<Send className="w-8 h-8 text-[#2F6FED]" />
-								</div>
-								<h3 className="text-xl font-bold text-[#1F2933] mb-2">
-									Заявка отправлена!
-								</h3>
-								<p className="text-[#6B7C8F] text-sm">
-									Мы свяжемся с вами в ближайшее рабочее время.
-								</p>
+					{status === 'success' ? (
+						<div className="h-full flex flex-col items-center justify-center text-center p-12 rounded-xl bg-[#E6EEF8] border border-[#2F6FED]/20">
+							<div className="w-16 h-16 bg-[#2F6FED]/15 rounded-xl flex items-center justify-center mb-4">
+								<Send className="w-8 h-8 text-[#2F6FED]" />
 							</div>
-						) : (
-							<form
-								onSubmit={handleSubmit}
-								className="space-y-5 p-8 bg-white rounded-xl border border-[#D9E1E8]"
+							<h3 className="text-xl font-bold text-[#1F2933] mb-2">
+								Заявка отправлена!
+							</h3>
+							<p className="text-[#6B7C8F] text-sm">
+								Мы свяжемся с вами в ближайшее рабочее время.
+							</p>
+						</div>
+					) : (
+						<form
+							onSubmit={handleSubmit}
+							noValidate
+							className="space-y-5 p-8 bg-white rounded-xl border border-[#D9E1E8]"
+						>
+							<h3 className="text-xl font-bold text-[#1F2933] mb-6">
+								Оставить заявку
+							</h3>
+
+							<div>
+								<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
+									Ваше имя *
+								</label>
+								<input
+									type="text"
+									value={form.name}
+									onChange={(e) => setForm({ ...form, name: e.target.value })}
+									placeholder="Иван Петров"
+									className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm"
+								/>
+								{errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+							</div>
+
+							<div>
+								<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
+									Телефон или Email *
+								</label>
+								<input
+									type="text"
+									value={form.contact}
+									onChange={(e) => setForm({ ...form, contact: e.target.value })}
+									placeholder="+7 (___) ___-__-__ или email"
+									className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm"
+								/>
+								{errors.contact && <p className="text-red-500 text-xs mt-1">{errors.contact}</p>}
+							</div>
+
+							<div>
+								<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
+									Сообщение
+								</label>
+								<textarea
+									rows={4}
+									value={form.message}
+									onChange={(e) => setForm({ ...form, message: e.target.value })}
+									placeholder="Расскажите, чем мы можем помочь..."
+									className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm resize-none"
+								/>
+								{errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+							</div>
+
+							{status === 'error' && (
+								<p className="text-red-500 text-sm text-center">{errorMsg}</p>
+							)}
+
+							<button
+								type="submit"
+								disabled={status === 'loading'}
+								className="w-full flex items-center justify-center gap-2 py-4 bg-[#2F6FED] hover:bg-[#4A7FF0] disabled:opacity-60 text-white font-bold rounded-lg transition-all duration-200 hover:shadow-[0_8px_25px_rgba(47,111,237,0.3)] text-sm"
 							>
-								<h3 className="text-xl font-bold text-[#1F2933] mb-6">
-									Оставить заявку
-								</h3>
+								<Send className="w-4 h-4" />
+								{status === 'loading' ? 'Отправляем...' : 'Отправить заявку'}
+							</button>
 
-								<div>
-									<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
-										Ваше имя *
-									</label>
-									<input
-										type="text"
-										required
-										value={form.name}
-										onChange={(e) =>
-											setForm({ ...form, name: e.target.value })
-										}
-										placeholder="Иван Петров"
-										className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm"
-									/>
-								</div>
-
-								<div>
-									<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
-										Телефон *
-									</label>
-									<input
-										type="tel"
-										required
-										value={form.phone}
-										onChange={(e) =>
-											setForm({ ...form, phone: e.target.value })
-										}
-										placeholder="+7 (___) ___-__-__"
-										className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm"
-									/>
-								</div>
-
-								<div>
-									<label className="block text-sm font-semibold text-[#1F2933] mb-1.5">
-										Сообщение
-									</label>
-									<textarea
-										rows={4}
-										value={form.message}
-										onChange={(e) =>
-											setForm({ ...form, message: e.target.value })
-										}
-										placeholder="Расскажите, чем мы можем помочь..."
-										className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm resize-none"
-									/>
-								</div>
-
-								<button
-									type="submit"
-									className="w-full flex items-center justify-center gap-2 py-4 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-bold rounded-lg transition-all duration-200 hover:shadow-[0_8px_25px_rgba(47,111,237,0.3)] text-sm"
-								>
-									<Send className="w-4 h-4" />
-									Отправить заявку
-								</button>
-
-								<p className="text-xs text-[#6B7C8F] text-center">
-									Нажимая кнопку, вы соглашаетесь с обработкой персональных
-									данных.
-								</p>
-							</form>
-						)}
+							<p className="text-xs text-[#6B7C8F] text-center">
+								Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+							</p>
+						</form>
+					)}
 					</motion.div>
 				</div>
 			</div>
