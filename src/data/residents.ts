@@ -47,7 +47,7 @@ export const residents: Resident[] = [
     image: 'https://images.unsplash.com/photo-1651954794374-f3c5fdd9c077?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Гидравлические рукава и промышленное оборудование в производственном цехе',
     phone: '+7 (351) 123-45-67',
-    email: 'hydraulics@techpark1219.ru',
+    email: 'rvd@tp1219.ru',
   },
   {
     id: '2',

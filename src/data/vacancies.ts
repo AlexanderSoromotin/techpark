@@ -24,7 +24,7 @@ export const vacancies: Vacancy[] = [
       'Умение читать чертежи',
       'Официальное трудоустройство',
     ],
-    contact: 'metal@techpark1219.ru',
+    contact: 'metal@tp1219.ru',
   },
   {
     id: '2',
@@ -39,7 +39,7 @@ export const vacancies: Vacancy[] = [
       'Опыт работы с РВД приветствуется',
       'Ответственность и аккуратность',
     ],
-    contact: 'hydraulics@techpark1219.ru',
+    contact: 'rvd@tp1219.ru',
   },
   {
     id: '3',
@@ -54,7 +54,7 @@ export const vacancies: Vacancy[] = [
       'Знание динамической балансировки — плюс',
       'Желание развиваться',
     ],
-    contact: 'driveshafts@techpark1219.ru',
+    contact: 'shafts@tp1219.ru',
   },
   // {
   //   id: '4',
@@ -84,7 +84,7 @@ export const vacancies: Vacancy[] = [
       'Понимание G-кода и слайсеров',
       'Внимательность к деталям',
     ],
-    contact: '3dprint@techpark1219.ru',
+    contact: '3d@tp1219.ru',
   },
   {
     id: '6',
@@ -98,7 +98,7 @@ export const vacancies: Vacancy[] = [
       'Опыт на производстве от 1 года',
       'Соблюдение норм охраны труда',
     ],
-    contact: 'fasteners@techpark1219.ru',
+    contact: 'fasteners@tp1219.ru',
   },
   {
     id: '7',
@@ -113,7 +113,7 @@ export const vacancies: Vacancy[] = [
       'Опыт работы в лаборатории',
       'Знание ГОСТ и методов контроля',
     ],
-    contact: 'chem@techpark1219.ru',
+    contact: 'chem@tp1219.ru',
   },
   {
     id: '8',
