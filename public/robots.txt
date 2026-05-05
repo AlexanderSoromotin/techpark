@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://techpark1219.ru/sitemap.xml
-
+Sitemap: https://tp1219.ru/sitemap.xml

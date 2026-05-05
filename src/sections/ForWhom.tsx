@@ -158,17 +158,17 @@ export default function ForWhom() {
 								</ul>
 
 								{/* CTA */}
-								<button
-									onClick={() =>
-										document.getElementById(s.hash)?.scrollIntoView({
-											behavior: 'smooth',
-										})
-									}
+								<a
+									href={`/#${s.hash}`}
+									onClick={(e) => {
+										e.preventDefault();
+										document.getElementById(s.hash)?.scrollIntoView({ behavior: 'smooth' });
+									}}
 									className={`flex items-center justify-center gap-2 w-full py-3.5 ${s.accentBg} text-white font-semibold rounded-lg text-sm transition-all duration-200 hover:opacity-90 hover:shadow-lg`}
 								>
 									{s.cta}
 									<ArrowRight className="w-4 h-4" />
-								</button>
+								</a>
 							</motion.div>
 						);
 					})}

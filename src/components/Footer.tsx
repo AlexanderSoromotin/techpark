@@ -1,10 +1,18 @@
-﻿import { Link } from 'react-router-dom';
+﻿import { Link, useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { residents } from '../data/residents';
 
 export default function Footer() {
-  const scrollTo = (hash: string) => {
-    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useNavigate();
+
+  const handleAnchorClick = (e: React.MouseEvent, hash: string) => {
+    e.preventDefault();
+    const el = document.getElementById(hash);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/', { state: { scrollTo: hash } });
+    }
   };
 
   return (
@@ -35,17 +43,23 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#2F6FED] mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#2F6FED] mt-0.5 shrink-0" aria-hidden="true" />
                 <span>Троицк, Челябинская область</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#2F6FED] shrink-0" />
-                <a href="tel:+73519001219" className="hover:text-white transition-colors">
-                  +7 (351) 900-12-19
+                <Phone className="w-4 h-4 text-[#2F6FED] shrink-0" aria-hidden="true" />
+                <a href="tel:+79080477030" className="hover:text-white transition-colors">
+                  +7 (908) 047-70-30
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#2F6FED] shrink-0" />
+                <Phone className="w-4 h-4 text-[#2F6FED] shrink-0" aria-hidden="true" />
+                <a href="tel:+79507215681" className="hover:text-white transition-colors">
+                  +7 (950) 721-56-81
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#2F6FED] shrink-0" aria-hidden="true" />
                 <a href="mailto:info@tp1219.ru" className="hover:text-white transition-colors">
                   info@tp1219.ru
                 </a>
@@ -68,22 +82,29 @@ export default function Footer() {
                 { label: 'Контакты', hash: 'contacts' },
               ].map((l) => (
                 <li key={l.hash}>
-                  <button
-                    onClick={() => scrollTo(l.hash)}
+                  <a
+                    href={`/#${l.hash}`}
+                    onClick={(e) => handleAnchorClick(e, l.hash)}
                     className="flex items-center gap-1 hover:text-[#2F6FED] transition-colors"
                   >
-                    <ChevronRight className="w-3 h-3" />
+                    <ChevronRight className="w-3 h-3" aria-hidden="true" />
                     {l.label}
-                  </button>
+                  </a>
                 </li>
               ))}
+              <li>
+                <Link to="/vacancies" className="flex items-center gap-1 hover:text-[#2F6FED] transition-colors">
+                  <ChevronRight className="w-3 h-3" aria-hidden="true" />
+                  Все вакансии
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Residents */}
           <div>
             <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
-              Резиденты
+              Производства
             </h3>
             <ul className="space-y-2 text-sm">
               {residents.map((r) => (
@@ -92,7 +113,7 @@ export default function Footer() {
                     to={`/resident/${r.slug}`}
                     className="flex items-center gap-1 hover:text-[#2F6FED] transition-colors"
                   >
-                    <ChevronRight className="w-3 h-3" />
+                    <ChevronRight className="w-3 h-3" aria-hidden="true" />
                     {r.name}
                   </Link>
                 </li>
@@ -106,14 +127,15 @@ export default function Footer() {
               Сотрудничество
             </h3>
             <p className="text-sm mb-6 leading-relaxed">
-              Хотите стать резидентом или разместить производство? Свяжитесь с нами.
+              Хотите арендовать производственное помещение или стать резидентом? Свяжитесь с нами — ответим в течение рабочего дня.
             </p>
-            <button
-              onClick={() => scrollTo('contacts')}
-              className="w-full py-3 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-semibold rounded-lg text-sm transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.3)]"
+            <a
+              href="/#contacts"
+              onClick={(e) => handleAnchorClick(e, 'contacts')}
+              className="w-full block text-center py-3 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-semibold rounded-lg text-sm transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.3)]"
             >
               Оставить заявку
-            </button>
+            </a>
             <div className="mt-8 pt-6 border-t border-white/10">
               <p className="text-xs">Пн–Пт: 8:00–18:00</p>
               <p className="text-xs mt-1">Сб: 9:00–14:00</p>

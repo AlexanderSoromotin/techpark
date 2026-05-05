@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -23,6 +24,13 @@ import {
 } from '../data/residentPortalContent';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import {
+  residentBusinessSchema,
+  breadcrumbSchema,
+  toJsonLd,
+  SITE_URL,
+  SITE_NAME,
+} from '../utils/schema';
 
 type SelectedItemState =
   | { kind: 'product'; item: ResidentCatalogItem }
@@ -180,17 +188,58 @@ export default function ResidentPage() {
     });
   };
 
+  // Динамические мета-данные резидента
+  const pageTitle = resident
+    ? `${resident.name} в Троицке — ${resident.category} | ${SITE_NAME}`
+    : `Резидент не найден | ${SITE_NAME}`;
+  const pageDescription = resident
+    ? `${resident.description}. ${resident.category} в Троицке, Челябинская область. Телефон: +7 (908) 047-70-30.`
+    : '';
+  const canonicalUrl = resident ? `${SITE_URL}/resident/${resident.slug}` : SITE_URL;
+
   if (!resident) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F7F9] text-[#6B7C8F]">
-        <p className="text-2xl font-bold mb-4 text-[#1F2933]">Резидент не найден</p>
-        <Link to="/" className="text-[#2F6FED] hover:underline font-medium">← На главную</Link>
-      </div>
+      <>
+        <Helmet>
+          <title>Страница не найдена | {SITE_NAME}</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F7F9] text-[#6B7C8F]">
+          <p className="text-2xl font-bold mb-4 text-[#1F2933]">Резидент не найден</p>
+          <Link to="/" className="text-[#2F6FED] hover:underline font-medium">← На главную</Link>
+        </div>
+      </>
     );
   }
 
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={resident.image} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={resident.image} />
+        <script type="application/ld+json">{toJsonLd(residentBusinessSchema({
+          name: resident.name,
+          description: resident.fullDescription,
+          telephone: resident.phone ?? '+79080477030',
+          email: resident.email ?? 'info@tp1219.ru',
+          slug: resident.slug,
+        }))}</script>
+        <script type="application/ld+json">{toJsonLd(breadcrumbSchema([
+          { name: 'Главная', url: `${SITE_URL}/` },
+          { name: 'Резиденты', url: `${SITE_URL}/#residents` },
+          { name: resident.name, url: canonicalUrl },
+        ]))}</script>
+      </Helmet>
       <Header />
       <main className="bg-[#F5F7F9] min-h-screen">
         <div
@@ -219,16 +268,28 @@ export default function ResidentPage() {
           />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.button
+            {/* Breadcrumbs */}
+            <motion.nav
+              aria-label="Хлебные крошки"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              onClick={() => navigate(-1)}
-              className="flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium mb-10 transition-colors"
+              className="mb-10"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Назад к резидентам
-            </motion.button>
+              <ol className="flex items-center gap-2 text-sm text-white/60 flex-wrap">
+                <li>
+                  <Link to="/" className="hover:text-white transition-colors">Главная</Link>
+                </li>
+                <li className="text-white/30">/</li>
+                <li>
+                  <a href="/#residents" onClick={(e) => { e.preventDefault(); navigate('/', { state: { scrollTo: 'residents' } }); }} className="hover:text-white transition-colors">
+                    Резиденты
+                  </a>
+                </li>
+                <li className="text-white/30">/</li>
+                <li className="text-white/90 font-medium" aria-current="page">{resident.name}</li>
+              </ol>
+            </motion.nav>
 
             <div className="flex flex-col lg:flex-row lg:items-end gap-8">
               <motion.div

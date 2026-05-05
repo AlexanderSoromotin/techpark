@@ -58,19 +58,21 @@ export default function CTASection() {
 
           {/* Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => scrollTo('contacts')}
+            <a
+              href="/#contacts"
+              onClick={(e) => { e.preventDefault(); scrollTo('contacts'); }}
               className="group flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#F5F7F9] text-[#2F6FED] font-bold rounded-lg transition-all duration-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] text-base"
             >
               Оставить заявку
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </button>
-            <button
-              onClick={() => scrollTo('contacts')}
+            </a>
+            <a
+              href="/#contacts"
+              onClick={(e) => { e.preventDefault(); scrollTo('contacts'); }}
               className="px-8 py-4 bg-white/12 hover:bg-white/20 border border-white/30 text-white font-bold rounded-lg transition-all duration-200 backdrop-blur-sm text-base"
             >
               Связаться напрямую
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

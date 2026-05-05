@@ -89,26 +89,29 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-            <button
-              onClick={() => scrollTo('contacts')}
+            <a
+              href="/#contacts"
+              onClick={(e) => { e.preventDefault(); scrollTo('contacts'); }}
               className="group flex items-center gap-2 px-8 py-4 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-bold rounded-lg transition-all duration-250 hover:shadow-[0_8px_30px_rgba(47,111,237,0.35)] text-base"
             >
               Стать резидентом
               <ArrowRight className="w-4 h-4 transition-transform duration-250 group-hover:translate-x-1" />
-            </button>
-            <button
-              onClick={() => scrollTo('residents')}
+            </a>
+            <a
+              href="/#residents"
+              onClick={(e) => { e.preventDefault(); scrollTo('residents'); }}
               className="px-8 py-4 bg-white/[0.08] hover:bg-white/[0.12] border border-white/15 text-white font-bold rounded-lg transition-all duration-250 backdrop-blur-sm text-base"
             >
               Найти производство
-            </button>
-            <button
-              onClick={() => scrollTo('contacts')}
+            </a>
+            <a
+              href="/#contacts"
+              onClick={(e) => { e.preventDefault(); scrollTo('contacts'); }}
               className="px-6 py-4 text-white/50 hover:text-white font-medium transition-colors duration-200 text-base flex items-center gap-1"
             >
               Связаться
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </motion.div>
         </motion.div>
 

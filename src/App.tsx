@@ -2,6 +2,8 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ResidentPage from './pages/ResidentPage';
+import VacanciesPage from './pages/VacanciesPage';
+import NotFoundPage from './pages/NotFoundPage';
 import { ContactFormProvider } from './context/ContactFormContext';
 import './index.css';
 
@@ -31,6 +33,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/resident/:slug" element={<ResidentPage />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ContactFormProvider>
     </BrowserRouter>

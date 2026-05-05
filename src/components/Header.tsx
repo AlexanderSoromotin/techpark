@@ -33,6 +33,11 @@ export default function Header() {
     document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleNavClick = (e: React.MouseEvent, hash: string) => {
+    e.preventDefault();
+    scrollTo(hash);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -47,7 +52,7 @@ export default function Header() {
           <Link to="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <img
               src="/logo.png"
-              alt="Логотип Технопарка 1219"
+              alt="Логотип Технопарка 1219 — промышленный технопарк в Троицке"
               className="h-8 sm:h-9 w-auto object-contain"
             />
             <div className="leading-tight">
@@ -56,34 +61,37 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop nav - показываем с lg (1024px+) */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Основная навигация">
             {navLinks.map((l) => (
-              <button
+              <a
                 key={l.hash}
-                onClick={() => scrollTo(l.hash)}
+                href={`/#${l.hash}`}
+                onClick={(e) => handleNavClick(e, l.hash)}
                 className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#2F6FED] after:transition-all after:duration-200 hover:after:w-full whitespace-nowrap"
               >
                 {l.label}
-              </button>
+              </a>
             ))}
           </nav>
 
-          {/* CTA - показываем с lg (1024px+) */}
+          {/* CTA */}
           <div className="hidden lg:block shrink-0">
-            <button
-              onClick={() => scrollTo('contacts')}
+            <a
+              href="/#contacts"
+              onClick={(e) => handleNavClick(e, 'contacts')}
               className="px-4 xl:px-5 py-2.5 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-[0_4px_20px_rgba(47,111,237,0.35)] whitespace-nowrap"
             >
               Стать резидентом
-            </button>
+            </a>
           </div>
 
-          {/* Mobile hamburger - показываем до lg */}
+          {/* Mobile hamburger */}
           <button
             className="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-200 shrink-0"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Меню"
+            aria-label="Открыть меню навигации"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -92,25 +100,27 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-[#2B2F36] border-t border-white/10 px-4 py-6 space-y-1">
+        <nav className="lg:hidden bg-[#2B2F36] border-t border-white/10 px-4 py-6 space-y-1" aria-label="Мобильная навигация">
           {navLinks.map((l) => (
-            <button
+            <a
               key={l.hash}
-              onClick={() => scrollTo(l.hash)}
-              className="w-full text-left text-white/80 hover:text-white font-medium py-3 px-3 rounded-lg hover:bg-white/5 transition-all duration-200 text-sm"
+              href={`/#${l.hash}`}
+              onClick={(e) => handleNavClick(e, l.hash)}
+              className="w-full block text-left text-white/80 hover:text-white font-medium py-3 px-3 rounded-lg hover:bg-white/5 transition-all duration-200 text-sm"
             >
               {l.label}
-            </button>
+            </a>
           ))}
           <div className="pt-3">
-            <button
-              onClick={() => scrollTo('contacts')}
-              className="w-full py-3 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-semibold rounded-lg transition-all duration-200 text-sm"
+            <a
+              href="/#contacts"
+              onClick={(e) => handleNavClick(e, 'contacts')}
+              className="w-full block text-center py-3 bg-[#2F6FED] hover:bg-[#4A7FF0] text-white font-semibold rounded-lg transition-all duration-200 text-sm"
             >
               Стать резидентом
-            </button>
+            </a>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );
