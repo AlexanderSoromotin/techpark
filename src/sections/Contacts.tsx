@@ -8,8 +8,8 @@ const contactInfo = [
 	{
 		icon: Phone,
 		label: 'Телефон',
-		value: '+7 (351) 900-12-19',
-		href: 'tel:+73519001219',
+		value: ['+7 (908) 047-70-30', '+7 (950) 721-56-81'],
+		href: ['tel:+79080477030', 'tel:+79507215681'],
 	},
 	{
 		icon: Mail,
@@ -141,12 +141,26 @@ export default function Contacts() {
 											{c.label}
 										</div>
 										{c.href ? (
+											Array.isArray(c.href) ? (
+												<div className="flex flex-col gap-0.5">
+													{(c.href as string[]).map((h, i) => (
+														<a
+															key={h}
+															href={h}
+															className="text-[#1F2933] font-semibold hover:text-[#2F6FED] transition-colors"
+														>
+															{(c.value as string[])[i]}
+														</a>
+													))}
+												</div>
+											) : (
 											<a
-												href={c.href}
+												href={c.href as string}
 												className="text-[#1F2933] font-semibold hover:text-[#2F6FED] transition-colors"
 											>
-												{c.value}
+												{c.value as string}
 											</a>
+											)
 										) : (
 											<span className="text-[#1F2933] font-semibold">
 												{c.value}
@@ -160,7 +174,7 @@ export default function Contacts() {
 						{/* Yandex Map */}
 						<div className="rounded-xl overflow-hidden border border-[#D9E1E8] h-64">
 							<iframe
-								src="https://yandex.ru/map-widget/v1/?ll=61.5685%2C54.0836&z=13&pt=61.5685%2C54.0836,pm2rdl&text=%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C"
+								src="https://yandex.ru/map-widget/v1/?ll=61.602056%2C54.107308&z=15&pt=61.602056%2C54.107308,pm2rdl&text=%D0%A2%D1%80%D0%BE%D0%B8%D1%86%D0%BA%2C%20%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C"
 								width="100%"
 								height="100%"
 								frameBorder="0"

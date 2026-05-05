@@ -46,7 +46,7 @@ export const residents: Resident[] = [
     iconName: 'Wrench',
     image: 'https://images.unsplash.com/photo-1651954794374-f3c5fdd9c077?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Гидравлические рукава и промышленное оборудование в производственном цехе',
-    phone: '+7 (351) 123-45-67',
+    phone: '+7 (908) 047-70-30',
     email: 'rvd@tp1219.ru',
   },
   {
@@ -76,8 +76,8 @@ export const residents: Resident[] = [
     iconName: 'Settings',
     image: 'https://media.istockphoto.com/id/1167176948/photo/machine-connection-joint.webp?a=1&b=1&s=612x612&w=0&k=20&c=nghsLilDFiaCrQYvUuGrKVLwoTeiyi1V1jYyvBKphZY=',
     imageAlt: 'Карданный вал и балансировочный стенд в индустриальном интерьере',
-    phone: '+7 (351) 123-45-68',
-    email: 'shafts@tp1219.ru',
+    phone: '+7 (908) 047-70-30',
+    email: 'val@tp1219.ru',
   },
   {
     id: '3',
@@ -106,7 +106,7 @@ export const residents: Resident[] = [
     iconName: 'Building2',
     image: 'https://png.pngtree.com/background/20250127/original/pngtree-3d-rendering-of-zinc-galvanized-wave-sheets-for-roof-picture-image_13277408.jpg',
     imageAlt: 'Металлоконструкции, балки и сварочный участок в цехе',
-    phone: '+7 (351) 123-45-69',
+    phone: '+7 (908) 047-70-30',
     email: 'metal@tp1219.ru',
   },
   {
@@ -136,7 +136,7 @@ export const residents: Resident[] = [
     iconName: 'Package',
     image: 'https://images.unsplash.com/photo-1605701249987-f0bb9b505d06?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Строительный крепёж, саморезы и производственная линия',
-    phone: '+7 (351) 123-45-70',
+    phone: '+7 (908) 047-70-30',
     email: 'fasteners@tp1219.ru',
   },
   {
@@ -166,7 +166,7 @@ export const residents: Resident[] = [
     iconName: 'Droplets',
     image: 'https://media.istockphoto.com/id/1340088719/photo/the-male-driver-pours-antifreeze-into-the-tank-to-spray-the-windshield-during-a-snowstorm.webp?a=1&b=1&s=612x612&w=0&k=20&c=N4JXHLnOkv5-G-X1sYyzDa9U6QfZ1m-VS4eaRXlLkfk=',
     imageAlt: 'Линия розлива автохимии с канистрами и лабораторным оборудованием',
-    phone: '+7 (351) 123-45-71',
+    phone: '+7 (908) 047-70-30',
     email: 'chem@tp1219.ru',
   },
   {
@@ -196,7 +196,7 @@ export const residents: Resident[] = [
     iconName: 'Printer',
     image: 'https://images.unsplash.com/photo-1642969164999-979483e21601?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: '3D-принтеры и прототипы в современной аддитивной лаборатории',
-    phone: '+7 (351) 123-45-72',
+    phone: '+7 (908) 047-70-30',
     email: '3d@tp1219.ru',
   },
   {
@@ -226,7 +226,7 @@ export const residents: Resident[] = [
     iconName: 'Home',
     image: 'https://40futov.ru/bitrix/templates/veonix/assets/img/bg/first-screen.jpg',
     imageAlt: 'Контейнерный дом на производственной площадке с модульными блоками',
-    phone: '+7 (351) 123-45-73',
+    phone: '+7 (908) 047-70-30',
     email: 'dom@40futov.ru',
   },
 ];

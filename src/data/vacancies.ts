@@ -54,7 +54,7 @@ export const vacancies: Vacancy[] = [
       'Знание динамической балансировки — плюс',
       'Желание развиваться',
     ],
-    contact: 'shafts@tp1219.ru',
+    contact: 'val@tp1219.ru',
   },
   // {
   //   id: '4',
@@ -98,7 +98,7 @@ export const vacancies: Vacancy[] = [
       'Опыт на производстве от 1 года',
       'Соблюдение норм охраны труда',
     ],
-    contact: 'fasteners@tp1219.ru',
+    contact: 'bolt@tp1219.ru',
   },
   {
     id: '7',
