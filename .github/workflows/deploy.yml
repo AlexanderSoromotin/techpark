@@ -3,7 +3,7 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build-and-deploy:
@@ -40,4 +40,7 @@ jobs:
 
       - name: Deploy dist to server
         run: |
-          rsync -avz --delete -e "ssh -p ${{ secrets.SSH_PORT }}" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/techpark/dist/
+          rsync -rlvz --delete --omit-dir-times --no-perms --no-owner --no-group \
+            -e "ssh -p ${{ secrets.SSH_PORT }}" \
+            ./dist/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/techpark/dist/
