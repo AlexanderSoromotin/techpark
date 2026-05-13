@@ -11,6 +11,7 @@ import Vacancies from '../sections/Vacancies';
 import CTASection from '../sections/CTASection';
 import Contacts from '../sections/Contacts';
 import FAQSection from '../sections/FAQSection';
+import PartnersCarousel from '../sections/PartnersCarousel';
 import { organizationSchema, websiteSchema, toJsonLd, SITE_URL } from '../utils/schema';
 
 export default function HomePage() {
@@ -46,6 +47,7 @@ export default function HomePage() {
         <ForWhom />
         <Vacancies />
         <FAQSection />
+        <PartnersCarousel />
         <CTASection />
         <Contacts />
       </main>

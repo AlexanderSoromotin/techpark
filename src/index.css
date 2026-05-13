@@ -188,6 +188,13 @@
 ::-webkit-scrollbar-thumb { background: #6B7C8F; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2F6FED; }
 
+/* Скрытый скроллбар (для карусели) */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar { display: none; }
+
 /* ========================================
    DECORATIVE ELEMENTS
    ======================================== */
