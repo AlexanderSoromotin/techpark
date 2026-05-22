@@ -1825,7 +1825,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Строительные гвозди',
         categoryId: 'nails',
         shortDescription: 'Гвозди общего назначения для строительных работ',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/6552210499.jpg'],
         description:
           'Строительные гвозди для монтажа деревянных конструкций, обрешётки, настилов и временных сооружений. Выпускаются различные диаметры и длины в соответствии с ГОСТ.',
         specs: [
@@ -1841,7 +1841,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Ершёные гвозди',
         categoryId: 'nails',
         shortDescription: 'Гвозди с насечкой для усиленной фиксации',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/643_original.jpg'],
         description:
           'Ершёные гвозди с кольцевой насечкой для повышенного удержания в древесине. Используются при сборке поддонов, каркасов, настилов и конструкций с повышенной нагрузкой.',
         specs: [
@@ -1857,7 +1857,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Кровельные гвозди',
         categoryId: 'nails',
         shortDescription: 'Гвозди для монтажа кровельных материалов',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/6dyjf9qhio0vwf404vny0wg2guzwwmug.png'],
         description:
           'Кровельные гвозди с увеличенной шляпкой для крепления мягкой кровли, рулонных материалов и листовых покрытий. Подходят для наружных строительных работ.',
         specs: [
@@ -1874,7 +1874,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Саморезы по металлу',
         categoryId: 'screws',
         shortDescription: 'Саморезы для крепления листового металла',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/a9cb01e0f6a711e9b5011c1b0d9d8d2e_a9cb01e2f6a711e9b5011c1b0d9d8d2e.jpeg'],
         description:
           'Саморезы по металлу для крепления профлиста, металлоконструкций, фасонных элементов и инженерных систем. Подходят для монтажа тонколистового металла.',
         specs: [
@@ -1890,7 +1890,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Саморезы по дереву',
         categoryId: 'screws',
         shortDescription: 'Крепёж для деревянных конструкций и настилов',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/sgy594hmm52xuzfynpqzxq0fhp0z8chg.jpg'],
         description:
           'Саморезы по дереву для монтажа деревянных конструкций, настилов, каркасов и отделочных материалов. Производятся различные длины и типы головок.',
         specs: [
@@ -1906,7 +1906,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Кровельные саморезы',
         categoryId: 'screws',
         shortDescription: 'Саморезы с шайбой для профлиста и кровли',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/samorez-krovelnyj-min.jpg'],
         description:
           'Кровельные саморезы с пресс-шайбой для монтажа профнастила, доборных элементов и кровельных покрытий. Используются при установке фасадных и кровельных систем.',
         specs: [
@@ -1923,7 +1923,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Болты шестигранные',
         categoryId: 'bolts',
         shortDescription: 'Стандартные болты для сборки конструкций',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/bolt-s-shestigrannoy-golovkoy-m6-kh-20-gost-7798_70_-b37_soberizavod-.jpg'],
         description:
           'Шестигранные болты для монтажа металлоконструкций, оборудования, инженерных систем и промышленного крепежа. Изготавливаются по стандартным размерам.',
         specs: [
@@ -1939,7 +1939,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Болты по чертежам',
         categoryId: 'bolts',
         shortDescription: 'Изготовление нестандартных болтов под заказ',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/10602.png'],
         description:
           'Производство нестандартных болтов по образцам, чертежам и техническому заданию заказчика. Возможна накатка резьбы, изменение длины и изготовление специальных форм.',
         specs: [
@@ -1955,7 +1955,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Шпильки резьбовые',
         categoryId: 'bolts',
         shortDescription: 'Резьбовые шпильки для монтажа и соединений',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/3-gor.jpg'],
         description:
           'Резьбовые шпильки для строительных, инженерных и монтажных работ. Используются при сборке оборудования, вентиляции, металлоконструкций и крепёжных узлов.',
         specs: [
@@ -1972,7 +1972,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Металлические хомуты',
         categoryId: 'mounting',
         shortDescription: 'Хомуты для труб, вентиляции и крепления',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/7z3zrhazkq2wdh7f5ipgk76jknnac8ud.jpg'],
         description:
           'Металлические хомуты различных форм для крепления труб, вентиляционных каналов и инженерных коммуникаций. Изготавливаются круглые, овальные и специальные формы.',
         specs: [
@@ -1988,7 +1988,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Подвесы для потолков',
         categoryId: 'mounting',
         shortDescription: 'Крепёжные элементы для потолочных систем',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/armstrong-podves-800x800.jpg'],
         description:
           'Штампованные подвесы для монтажа потолочных систем и металлических профилей. Производятся на прессовом оборудовании для строительных и отделочных работ.',
         specs: [
@@ -2004,7 +2004,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Усиливающие уголки',
         categoryId: 'mounting',
         shortDescription: 'Штампованные уголки для усиления соединений',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/images.jfif'],
         description:
           'Усиливающие металлические уголки для сборки каркасных и строительных конструкций. Изготавливаются методом штамповки с отверстиями под крепёж.',
         specs: [
