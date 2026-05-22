@@ -16,6 +16,7 @@ import { getResidentBySlug } from '../data/residents';
 import {
   getResidentPortalContent,
   type ArticleContentBlock,
+  type ResidentCategory,
   type ResidentCatalogItem,
   type ResidentKnowledgeArticle,
   type ResidentNewsItem,
@@ -36,11 +37,63 @@ type SelectedItemState =
   | { kind: 'product'; item: ResidentCatalogItem }
   | { kind: 'service'; item: ResidentServiceItem };
 
+type CategorizedItemsSection<T> = {
+  id: string;
+  title: string;
+  items: T[];
+};
+
+const UNCATEGORIZED_CATEGORY_ID = '__uncategorized__';
+
+const buildCategorizedSections = <T extends { categoryId?: string }>(
+  categories: ResidentCategory[],
+  items: T[],
+  fallbackTitle: string,
+): CategorizedItemsSection<T>[] => {
+  if (items.length === 0) {
+    return [];
+  }
+
+  const itemsByCategory = new Map<string, T[]>();
+
+  items.forEach((item) => {
+    const key = item.categoryId ?? UNCATEGORIZED_CATEGORY_ID;
+    const bucket = itemsByCategory.get(key);
+
+    if (bucket) {
+      bucket.push(item);
+      return;
+    }
+
+    itemsByCategory.set(key, [item]);
+  });
+
+  const sections = categories
+    .map((category) => ({
+      id: category.id,
+      title: category.title,
+      items: itemsByCategory.get(category.id) ?? [],
+    }))
+    .filter((section) => section.items.length > 0);
+
+  const knownCategoryIds = new Set(categories.map((category) => category.id));
+  const extraSections = Array.from(itemsByCategory.entries())
+    .filter(([categoryId]) => !knownCategoryIds.has(categoryId))
+    .map(([categoryId, categoryItems]) => ({
+      id: categoryId,
+      title: categoryId === UNCATEGORIZED_CATEGORY_ID ? fallbackTitle : fallbackTitle,
+      items: categoryItems,
+    }));
+
+  return sections.length > 0 ? [...sections, ...extraSections] : [{ id: fallbackTitle, title: fallbackTitle, items }];
+};
+
 const EMPTY_PORTAL_CONTENT: ResidentPortalContent = {
   residentSlug: 'unknown',
   intro: '',
   productCategories: [],
   products: [],
+  serviceCategories: [],
   services: [],
   news: [],
   knowledgeBase: [],
@@ -55,7 +108,6 @@ export default function ResidentPage() {
     () => (resident ? getResidentPortalContent(resident) : EMPTY_PORTAL_CONTENT),
     [resident],
   );
-  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<SelectedItemState | null>(null);
   const [selectedItemPhotoIndex, setSelectedItemPhotoIndex] = useState(0);
   const [openArticleId, setOpenArticleId] = useState<string | null>(null);
@@ -125,12 +177,34 @@ export default function ResidentPage() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [lightboxIndex, portal.gallery.length, openArticleId, openNewsId]);
 
-  const visibleProducts = useMemo(() => {
-    if (!activeCategoryId) {
-      return portal.products;
-    }
-    return portal.products.filter((item) => item.categoryId === activeCategoryId);
-  }, [activeCategoryId, portal.products]);
+  const productSections = useMemo(
+    () => buildCategorizedSections(portal.productCategories, portal.products, 'Все товары'),
+    [portal.productCategories, portal.products],
+  );
+
+  const serviceSections = useMemo(
+    () => buildCategorizedSections(portal.serviceCategories, portal.services, 'Все услуги'),
+    [portal.serviceCategories, portal.services],
+  );
+
+  const [activeProductTab, setActiveProductTab] = useState<string>('__all__');
+  const [activeServiceTab, setActiveServiceTab] = useState<string>('__all__');
+
+  const visibleProducts = useMemo(
+    () =>
+      activeProductTab === '__all__'
+        ? portal.products
+        : (productSections.find((s) => s.id === activeProductTab)?.items ?? []),
+    [activeProductTab, portal.products, productSections],
+  );
+
+  const visibleServices = useMemo(
+    () =>
+      activeServiceTab === '__all__'
+        ? portal.services
+        : (serviceSections.find((s) => s.id === activeServiceTab)?.items ?? []),
+    [activeServiceTab, portal.services, serviceSections],
+  );
 
   const articleById = useMemo(
     () => Object.fromEntries(portal.knowledgeBase.map((article) => [article.id, article])),
@@ -368,34 +442,33 @@ export default function ResidentPage() {
                 >
                   <div className="mb-6">
                     <h2 className="text-2xl font-black text-[#1F2933]">Товары</h2>
-                    {/*<p className="text-[#6B7C8F] text-sm mt-1">Карточки с фото, характеристиками и связанными статьями.</p>*/}
                   </div>
 
-                  {portal.productCategories.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-5">
+                  {productSections.length > 1 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
                       <button
                         type="button"
-                        onClick={() => setActiveCategoryId(null)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide transition-colors ${
-                          activeCategoryId === null
+                        onClick={() => setActiveProductTab('__all__')}
+                        className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                          activeProductTab === '__all__'
                             ? 'bg-[#2F6FED] text-white'
-                            : 'bg-[#E6EEF8] text-[#2F6FED] hover:bg-[#D9E1E8]'
+                            : 'bg-[#F5F7F9] text-[#6B7C8F] hover:bg-[#E6EEF8] hover:text-[#1F2933]'
                         }`}
                       >
                         Все
                       </button>
-                      {portal.productCategories.map((category) => (
+                      {productSections.map((section) => (
                         <button
-                          key={category.id}
+                          key={section.id}
                           type="button"
-                          onClick={() => setActiveCategoryId(category.id)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide transition-colors ${
-                            activeCategoryId === category.id
+                          onClick={() => setActiveProductTab(section.id)}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                            activeProductTab === section.id
                               ? 'bg-[#2F6FED] text-white'
-                              : 'bg-[#E6EEF8] text-[#2F6FED] hover:bg-[#D9E1E8]'
+                              : 'bg-[#F5F7F9] text-[#6B7C8F] hover:bg-[#E6EEF8] hover:text-[#1F2933]'
                           }`}
                         >
-                          {category.title}
+                          {section.title}
                         </button>
                       ))}
                     </div>
@@ -435,11 +508,40 @@ export default function ResidentPage() {
                 >
                   <div className="mb-6">
                     <h2 className="text-2xl font-black text-[#1F2933]">Услуги</h2>
-                    {/*<p className="text-[#6B7C8F] text-sm mt-1">Карточки с фото, характеристиками и связанными статьями.</p>*/}
                   </div>
 
+                  {serviceSections.length > 1 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      <button
+                        type="button"
+                        onClick={() => setActiveServiceTab('__all__')}
+                        className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                          activeServiceTab === '__all__'
+                            ? 'bg-[#2F6FED] text-white'
+                            : 'bg-[#F5F7F9] text-[#6B7C8F] hover:bg-[#E6EEF8] hover:text-[#1F2933]'
+                        }`}
+                      >
+                        Все
+                      </button>
+                      {serviceSections.map((section) => (
+                        <button
+                          key={section.id}
+                          type="button"
+                          onClick={() => setActiveServiceTab(section.id)}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                            activeServiceTab === section.id
+                              ? 'bg-[#2F6FED] text-white'
+                              : 'bg-[#F5F7F9] text-[#6B7C8F] hover:bg-[#E6EEF8] hover:text-[#1F2933]'
+                          }`}
+                        >
+                          {section.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="grid sm:grid-cols-2 gap-4">
-                    {portal.services.map((item) => (
+                    {visibleServices.map((item) => (
                       <article
                         key={item.id}
                         className="group rounded-xl border border-[#D9E1E8] overflow-hidden bg-white shadow-sm hover:shadow-md hover:border-[#2F6FED]/30 transition-all duration-200 cursor-pointer"
@@ -565,7 +667,7 @@ export default function ResidentPage() {
               >
                 <h2 className="text-2xl font-black text-[#1F2933] mb-6">Преимущества</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {resident.advantages.map((a, i) => (
+                  {resident.advantages.map((a: string, i: number) => (
                     <div key={i} className="flex items-center gap-3 p-4 bg-[#E6EEF8] rounded-xl border border-sky-100">
                       <div className="w-8 h-8 bg-[#2F6FED] rounded-lg flex items-center justify-center shrink-0 text-white font-bold text-sm">
                         {i + 1}

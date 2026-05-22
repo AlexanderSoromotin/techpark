@@ -33,14 +33,14 @@ export default function ResidentsGrid() {
               <span className="bg-gradient-to-r from-[#2F6FED] to-[#4A7FF0] bg-clip-text text-transparent">производства</span>
             </h2>
             <p className="text-[#6B7C8F] text-base leading-relaxed">
-              Девять производственных компаний под одной крышей. Нажмите на карточку, чтобы узнать больше.
+              Десять актуальных направлений под одной крышей. Нажмите на карточку, чтобы узнать больше.
             </p>
           </motion.div>
         </div>
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {residents.map((r, i) => {
+          {residents.filter((r) => !r.is_hidden).map((r, i) => {
             return (
               <motion.article
                 key={r.id}

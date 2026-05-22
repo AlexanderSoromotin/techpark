@@ -1,15 +1,6 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import type { ReactNode } from 'react';
-
-interface ContactFormContextValue {
-  prefillMessage: string;
-  setPrefillMessage: (msg: string) => void;
-}
-
-export const ContactFormContext = createContext<ContactFormContextValue>({
-  prefillMessage: '',
-  setPrefillMessage: () => {},
-});
+import { ContactFormContext } from './ContactFormContextBase';
 
 export function ContactFormProvider({ children }: { children: ReactNode }) {
   const [prefillMessage, setPrefillMessage] = useState('');

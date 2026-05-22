@@ -1,4 +1,4 @@
-﻿import { useRef, useState, useEffect } from 'react';
+﻿import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { useContactForm } from '../context/useContactForm';
@@ -41,36 +41,29 @@ export default function Contacts() {
 	const [form, setForm] = useState({ name: '', contact: '', message: '' });
 	const [errors, setErrors] = useState({ name: '', contact: '', message: '' });
 	const { prefillMessage, setPrefillMessage } = useContactForm();
+	const messageValue = form.message || prefillMessage;
 
-	// Подставляем сообщение из контекста (отклик на вакансию) и сразу сбрасываем
-	useEffect(() => {
-		if (!prefillMessage) return;
-		// Объединяем в один рендер через функциональное обновление
-		setForm((f) => ({ ...f, message: prefillMessage }));
-		// Откладываем сброс контекста, чтобы не вызывать каскадный рендер
-		const id = setTimeout(() => setPrefillMessage(''), 0);
-		return () => clearTimeout(id);
-	}, [prefillMessage, setPrefillMessage]);
-
-	const validate = () => {
+	const validate = (values: typeof form) => {
 		const e = { name: '', contact: '', message: '' };
-		if (!form.name.trim()) e.name = 'Введите ваше имя';
-		if (!form.contact.trim()) e.contact = 'Введите телефон или email';
-		if (form.message.trim().length < 10) e.message = 'Сообщение должно быть не короче 10 символов';
+		if (!values.name.trim()) e.name = 'Введите ваше имя';
+		if (!values.contact.trim()) e.contact = 'Введите телефон или email';
+		if (values.message.trim().length < 10) e.message = 'Сообщение должно быть не короче 10 символов';
 		setErrors(e);
 		return !e.name && !e.contact && !e.message;
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		if (!validate()) return;
+		const payload = { ...form, message: messageValue };
+		if (!validate(payload)) return;
 
 		setStatus('loading');
 		setErrorMsg('');
 		try {
-			await submitFeedback(form);
+			await submitFeedback(payload);
 			setStatus('success');
 			setForm({ name: '', contact: '', message: '' });
+			setPrefillMessage('');
 		} catch (err: unknown) {
 			setStatus('error');
 			setErrorMsg(
@@ -251,8 +244,13 @@ export default function Contacts() {
 								</label>
 								<textarea
 									rows={4}
-									value={form.message}
-									onChange={(e) => setForm({ ...form, message: e.target.value })}
+												value={messageValue}
+												onChange={(e) => {
+													if (prefillMessage) {
+														setPrefillMessage('');
+													}
+													setForm({ ...form, message: e.target.value });
+												}}
 									placeholder="Расскажите, чем мы можем помочь..."
 									className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm resize-none"
 								/>

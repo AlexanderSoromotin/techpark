@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Briefcase, Clock, DollarSign, ArrowRight, ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
@@ -15,26 +15,28 @@ const parseSalary = (s: string): number => {
 };
 
 export default function VacanciesPage() {
+  const navigate = useNavigate();
   const { setPrefillMessage } = useContactForm();
+  const industriesCount = new Set(vacancies.map((vacancy) => vacancy.residentSlug)).size;
 
   const handleApply = (position: string, company: string) => {
     setPrefillMessage(`Здравствуйте! Хочу откликнуться на вакансию «${position}» (${company}).`);
-    window.location.href = '/#contacts';
+    navigate('/', { state: { scrollTo: 'contacts' } });
   };
 
   return (
     <>
       <Helmet>
-        <title>Вакансии в Технопарке 1219 — Работа в Троицке | Сварщик, Слесарь, Токарь</title>
+        <title>Вакансии в Технопарке 1219 — Работа в Троицке | Производство и инженерные направления</title>
         <meta
           name="description"
-          content="Актуальные вакансии в Технопарке 1219, Троицк, Челябинская область. Официальное трудоустройство, конкурентная зарплата. Открыты позиции: сварщик, слесарь-гидравлик, токарь, оператор 3D-печати, лаборант, монтажник."
+          content="Актуальные вакансии в Технопарке 1219, Троицк, Челябинская область. Официальное трудоустройство, конкурентная зарплата, производственные и инженерные направления: металлообработка, гидравлика, вентиляция, 3D-печать, модульное строительство и другие." 
         />
         <link rel="canonical" href={`${SITE_URL}/vacancies`} />
         <meta property="og:title" content={`Вакансии — ${SITE_NAME}`} />
         <meta
           property="og:description"
-          content="Работа в Технопарке 1219, Троицк. Официальное трудоустройство. Сварщик, слесарь-гидравлик, токарь, оператор 3D-печати."
+          content="Работа в Технопарке 1219, Троицк. Официальное трудоустройство в производственных и инженерных направлениях."
         />
         <meta property="og:url" content={`${SITE_URL}/vacancies`} />
         <meta property="og:type" content="website" />
@@ -103,7 +105,7 @@ export default function VacanciesPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
             {[
               { value: String(vacancies.length), label: 'Открытых вакансий' },
-              { value: '7', label: 'Отраслей производства' },
+              { value: String(industriesCount), label: 'Направлений с вакансиями' },
               { value: '100%', label: 'Официальное трудоустройство' },
               { value: 'Троицк', label: 'Челябинская область' },
             ].map((s) => (

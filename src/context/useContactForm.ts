@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ContactFormContext } from './ContactFormContext';
+import { ContactFormContext } from './ContactFormContextBase';
 
 export const useContactForm = () => useContext(ContactFormContext);
 

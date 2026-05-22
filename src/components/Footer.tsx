@@ -107,7 +107,7 @@ export default function Footer() {
               Производства
             </h3>
             <ul className="space-y-2 text-sm">
-              {residents.map((r) => (
+              {residents.filter((r) => !r.is_hidden).map((r) => (
                 <li key={r.id}>
                   <Link
                     to={`/resident/${r.slug}`}

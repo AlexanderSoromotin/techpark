@@ -16,10 +16,10 @@ const fadeUp = {
 };
 
 const statsData = [
-  { value: '9', label: 'Резидентов' },
-  { value: '5 000+', label: 'м² площадей' },
-  { value: '7', label: 'Направлений' },
-  { value: '2019', label: 'Год основания' },
+    { value: '10', label: 'Направлений' },
+    { value: '5 000+', label: 'м² площадей' },
+    { value: '2019', label: 'Год основания' },
+    { value: '3', label: 'Резидента' },
 ];
 
 export default function Hero() {
