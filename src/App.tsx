@@ -17,6 +17,8 @@ function ScrollRestorer() {
       if (el) {
         setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
       }
+    } else if (state && typeof state === 'object' && 'noScroll' in state) {
+      // не скроллим — открытие/закрытие модалок
     } else {
       window.scrollTo(0, 0);
     }

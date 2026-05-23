@@ -165,12 +165,12 @@ export default function ResidentPage() {
 
   const openArticleById = useCallback((id: string) => {
     setOpenArticleId(id);
-    navigate(`/resident/${slug}/article/${id}`, { replace: false });
+    navigate(`/resident/${slug}/article/${id}`, { replace: false, state: { noScroll: true } });
   }, [slug, navigate]);
 
   const closeArticle = useCallback(() => {
     setOpenArticleId(null);
-    navigate(`/resident/${slug}`, { replace: false });
+    navigate(`/resident/${slug}`, { replace: false, state: { noScroll: true } });
   }, [slug, navigate]);
 
   useEffect(() => {
