@@ -16,7 +16,7 @@ const fadeUp = {
 };
 
 const statsData = [
-    { value: '10', label: 'Направлений' },
+    { value: '9', label: 'Направлений' },
     { value: '5 000+', label: 'м² площадей' },
     { value: '2019', label: 'Год основания' },
     { value: '3', label: 'Резидента' },
