@@ -33,7 +33,7 @@ const statItems = [
 
 ];
 
-function Counter({ value }: { value: string }) {
+function Counter({ value }: { value: string | number }) {
 	return <span className="stat-number">{value}</span>;
 }
 
