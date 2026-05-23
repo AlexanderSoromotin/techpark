@@ -369,7 +369,7 @@ export const residents: Resident[] = [
     imageAlt: 'Контейнерный дом на производственной площадке с модульными блоками',
     is_hidden: false,
     phone: '+7 (925) 440-40-00',
-    email: 'info@40futov.ru',
+    email: 'dom@40futov.ru',
   },
   {
     id: '12',
