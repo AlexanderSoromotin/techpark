@@ -305,7 +305,7 @@ export default function ResidentPage() {
           name: resident.name,
           description: resident.fullDescription,
           telephone: resident.phone ?? '+79080477030',
-          email: resident.email ?? 'info@tp1219.ru',
+          email: resident.email ?? 'info@1219.ru',
           slug: resident.slug,
         }))}</script>
         <script type="application/ld+json">{toJsonLd(breadcrumbSchema([

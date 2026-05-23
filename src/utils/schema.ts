@@ -6,7 +6,7 @@ export const SITE_URL = 'https://tp1219.ru';
 export const SITE_NAME = 'Технопарк 1219';
 export const SITE_PHONE = '+79080477030';
 export const SITE_PHONE_DISPLAY = '+7 (908) 047-70-30';
-export const SITE_EMAIL = 'info@tp1219.ru';
+export const SITE_EMAIL = 'info@1219.ru';
 export const SITE_ADDRESS = {
   locality: 'Троицк',
   region: 'Челябинская область',

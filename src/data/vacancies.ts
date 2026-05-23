@@ -24,7 +24,7 @@ export const vacancies: Vacancy[] = [
       'Умение читать чертежи',
       'Официальное трудоустройство',
     ],
-    contact: 'metal@tp1219.ru',
+    contact: 'metal@1219.ru',
   },
   {
     id: '2',
@@ -39,7 +39,7 @@ export const vacancies: Vacancy[] = [
       'Опыт работы с РВД приветствуется',
       'Ответственность и аккуратность',
     ],
-    contact: 'rvd@tp1219.ru',
+    contact: 'rvd@1219.ru',
   },
   {
     id: '3',
@@ -54,7 +54,7 @@ export const vacancies: Vacancy[] = [
       'Знание динамической балансировки — плюс',
       'Желание развиваться',
     ],
-    contact: 'val@tp1219.ru',
+    contact: 'val@1219.ru',
   },
   {
     id: '4',
@@ -69,7 +69,7 @@ export const vacancies: Vacancy[] = [
       'Внимательность к размерам и маркировке',
       'Готовность к серийному производству',
     ],
-    contact: 'stroy@tp1219.ru',
+    contact: 'stroy@1219.ru',
   },
   {
     id: '5',
@@ -84,7 +84,7 @@ export const vacancies: Vacancy[] = [
       'Понимание сборки фасонных элементов',
       'Аккуратность и соблюдение размеров',
     ],
-    contact: 'vent@tp1219.ru',
+    contact: 'vent@1219.ru',
   },
   {
     id: '6',
@@ -99,7 +99,7 @@ export const vacancies: Vacancy[] = [
       'Понимание G-кода и слайсеров',
       'Внимательность к деталям',
     ],
-    contact: '3d@tp1219.ru',
+    contact: '3d@1219.ru',
   },
   {
     id: '7',
@@ -113,7 +113,7 @@ export const vacancies: Vacancy[] = [
       'Опыт на производстве от 1 года',
       'Соблюдение норм охраны труда',
     ],
-    contact: 'fasteners@tp1219.ru',
+    contact: 'metiz@1219.ru',
   },
   {
     id: '8',
@@ -128,7 +128,7 @@ export const vacancies: Vacancy[] = [
       'Опыт слесарной сборки и подгонки узлов',
       'Умение работать с ручным инструментом',
     ],
-    contact: 'equip@tp1219.ru',
+    contact: 'info@1219.ru',
   },
   {
     id: '9',
@@ -143,7 +143,7 @@ export const vacancies: Vacancy[] = [
       'Готовность к сменному графику',
       'Соблюдение техники безопасности',
     ],
-    contact: 'recycling@tp1219.ru',
+    contact: 'eco@1219.ru',
   },
   {
     id: '10',
@@ -158,7 +158,7 @@ export const vacancies: Vacancy[] = [
       'Навыки измерений и доводки деталей',
       'Умение читать чертежи',
     ],
-    contact: 'tooling@tp1219.ru',
+    contact: 'info@1219.ru',
   },
   {
     id: '11',

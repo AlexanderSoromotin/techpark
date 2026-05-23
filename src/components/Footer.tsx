@@ -60,8 +60,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#2F6FED] shrink-0" aria-hidden="true" />
-                <a href="mailto:info@tp1219.ru" className="hover:text-white transition-colors">
-                  info@tp1219.ru
+                <a href="mailto:info@1219.ru" className="hover:text-white transition-colors">
+                  info@1219.ru
                 </a>
               </div>
             </div>

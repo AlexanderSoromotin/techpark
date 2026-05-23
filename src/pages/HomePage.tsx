@@ -5,7 +5,7 @@ import Hero from '../sections/Hero';
 import About from '../sections/About';
 import ResidentsGrid from '../sections/ResidentsGrid';
 import WhyUs from '../sections/WhyUs';
-import Gallery from '../sections/Gallery';
+// import Gallery from '../sections/Gallery';
 import ForWhom from '../sections/ForWhom';
 import Vacancies from '../sections/Vacancies';
 import CTASection from '../sections/CTASection';
@@ -43,7 +43,7 @@ export default function HomePage() {
         <About />
         <ResidentsGrid />
         <WhyUs />
-        <Gallery />
+        {/*<Gallery />*/}
         <ForWhom />
         <Vacancies />
         <FAQSection />

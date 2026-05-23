@@ -14,8 +14,8 @@ const contactInfo = [
 	{
 		icon: Mail,
 		label: 'Email',
-		value: 'info@tp1219.ru',
-		href: 'mailto:info@tp1219.ru',
+		value: 'info@1219.ru',
+		href: 'mailto:info@1219.ru',
 	},
 	{
 		icon: MapPin,

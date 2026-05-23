@@ -2027,7 +2027,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Изготовление гвоздей',
         categoryId: 'production',
         shortDescription: 'Производство гвоздей различных размеров',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/8b12ad4d59ba9c8f1328398f14b813e8.jpg'],
         description:
           'Изготовление строительных, кровельных и специальных гвоздей на гвоздильном оборудовании. Выпускаются стандартные размеры и партии под требования заказчика.',
         specs: [
@@ -2043,7 +2043,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Производство саморезов',
         categoryId: 'production',
         shortDescription: 'Выпуск саморезов для строительства и монтажа',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/bra1csybznl8iz9xk8rqg300yvf3dmla.png'],
         description:
           'Производство саморезов по металлу, дереву и кровельных саморезов. Возможен подбор параметров резьбы, длины и типа головки под задачу заказчика.',
         specs: [
@@ -2059,7 +2059,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Накатка резьбы',
         categoryId: 'production',
         shortDescription: 'Формирование резьбы на металлических деталях',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/nakatka_rezby_1726052187.jpg'],
         description:
           'Накатка метрической резьбы на металлических заготовках и крепёжных элементах. Используется при производстве болтов, шпилек и специальных крепёжных изделий.',
         specs: [
@@ -2075,7 +2075,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Изготовление нестандартного крепежа',
         categoryId: 'production',
         shortDescription: 'Крепёж по образцам и чертежам заказчика',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/hy-metal-fasteners-3438926.jpg'],
         description:
           'Производство нестандартного крепежа по техническому заданию, образцам и чертежам. Возможна механическая обработка, штамповка, гибка и изготовление специальных форм.',
         specs: [
@@ -2092,7 +2092,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Штамповка металлических изделий',
         categoryId: 'stamping',
         shortDescription: 'Изготовление крепежа методом штамповки',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/hy-brass-fasteners-1270345.jpg'],
         description:
           'Штамповка крепёжных и монтажных элементов на прессовом оборудовании. Выпускаются уголки, пластины, подвесы, крепления и другие изделия из листового металла.',
         specs: [
@@ -2108,7 +2108,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Изготовление металлических хомутов',
         categoryId: 'stamping',
         shortDescription: 'Производство хомутов различной формы',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/foto-khomutov-santekhnicheskikh.jpg'],
         description:
           'Производство металлических хомутов для труб, вентиляции, инженерных систем и монтажных работ. Изготавливаются круглые, овальные и специальные формы.',
         specs: [
@@ -2124,7 +2124,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Гибка крепёжных элементов',
         categoryId: 'stamping',
         shortDescription: 'Гибка листового металла для крепёжных изделий',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/metiz/diploma.webp'],
         description:
           'Гибка металлических заготовок и крепёжных элементов на листогибочном оборудовании. Выполняется изготовление уголков, пластин и монтажных деталей.',
         specs: [
@@ -2288,25 +2288,11 @@ const portalSeeds: Record<string, PortalSeed> = {
     ],
     services: [
       {
-        id: '3d-service-scan',
-        title: '3D-сканирование деталей',
-        categoryId: 'scan-model',
-        shortDescription: 'Снимаем геометрию деталей для ремонта, реверс-инжиниринга и контроля.',
-        images: ['https://s3.datary-dev.ru/'],
-        description:
-          'Проводим 3D-сканирование с последующей подготовкой модели под CAD, печать и ремонт. Решение подходит для восстановления изношенных деталей и снятия размеров сложной геометрии.',
-        specs: [
-          ['Точность', 'До 0.05 мм'],
-          ['Форматы', 'STL, OBJ, STEP'],
-          ['Срок', '1–2 дня'],
-        ],
-      },
-      {
         id: '3d-service-modeling',
         title: '3D-моделирование под производство',
         categoryId: 'scan-model',
         shortDescription: 'Создаём CAD-модели и дорабатываем существующие модели под печать.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/3d/Screen_Shot_2020-09-21_at_11.20.42_AM_sixeiw.webp'],
         description:
           'Готовим модели под FDM и SLA с учётом геометрии, посадок, поддержек и постобработки. При необходимости делаем тестовый прототип перед серией.',
         specs: [
@@ -2320,7 +2306,7 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Печать FDM и SLA',
         categoryId: 'print',
         shortDescription: 'Прототипы и малые серии с подбором материала под задачу.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: ['https://s3.datary-dev.ru/tp1219/3d/SLA_vs._FDM_10_11zon.webp'],
         description:
           'Печатаем функциональные детали, корпуса, мастер-модели и прототипы по технологиям FDM и SLA. Подбираем материал, проводим постобработку и контроль геометрии.',
         specs: [
@@ -2346,7 +2332,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Жилой модуль 20 футов',
         categoryId: 'residential',
         shortDescription: 'Компактный жилой модуль с кухней, санузлом и спальной зоной.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/5ae/j2aftu3yzycxts7ur7j8yf3x991uop4u.jpg',
+            'https://40futov.ru/upload/iblock/ee7/ajed7bkjpnu4izdzd8i2vl2b2t0eiody.jpg',
+            'https://40futov.ru/upload/iblock/54d/ys55f2n5uv5kf8yany5qn8wcn327qn7q.jpg',
+            'https://40futov.ru/upload/iblock/a31/fajogq9ws1ualsnq22v5a316ajk2gzh8.jpg',
+        ],
         description:
           'Полностью укомплектованный модуль на базе 20-футового контейнера с утеплением, электрикой, отделкой и инженерной подготовкой для круглогодичного использования.',
         specs: [
@@ -2360,7 +2351,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Жилой модуль 30 футов',
         categoryId: 'residential',
         shortDescription: 'Модуль со спальней, кухней-гостиной и полноценным санузлом.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/73c/y2g2uciykj8cgx91ny8nxtiqap817d5g.jpg',
+            'https://40futov.ru/upload/iblock/a02/sr5z05z0jf8kh0kiz8ijv62ambiby6or.jpg',
+            'https://40futov.ru/upload/iblock/135/4925sk7q3fgq17wxcac2itr1pnktlm0r.jpg',
+            'https://40futov.ru/upload/iblock/5c3/6j5ltneccwz6f0jqqskpcfw0q5t0fsha.jpg',
+        ],
         description:
           'Жилой модуль средней площади для дачи, гостевого дома или служебного размещения с готовой отделкой и подготовкой к подключению коммуникаций.',
         specs: [
@@ -2374,7 +2370,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Жилой модуль 40 футов',
         categoryId: 'residential',
         shortDescription: 'Просторный модуль с гостиной, спальней и кухней-столовой.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/bb3/0flm2x7wyv166qis635yub6sd9o6irxn.jpg',
+            'https://40futov.ru/upload/iblock/c67/px5az4moyipfbhukb5cd4fhh6jqfyjpa.jpg',
+            'https://40futov.ru/upload/iblock/d95/sobjg6gdvk77llbpdhav8bhb4oqxvopb.jpg',
+            'https://40futov.ru/upload/iblock/691/o3v234u2rwvb7j58dz6jtqt31z15unvy.jpg',
+        ],
         description:
           'Полноценный жилой модуль на базе 40-футового контейнера с расширенной планировкой, внутренней отделкой и инженерной разводкой.',
         specs: [
@@ -2388,7 +2389,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Баня 20 футов',
         categoryId: 'sauna',
         shortDescription: 'Компактная баня с парной, моечной и раздевалкой.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/006/tatadpcfgsawr3zuuqjjnbnub9socjcs.jpg',
+            'https://40futov.ru/upload/iblock/6f5/49n6lt2es9dadb1x9wetu4ulmy242aww.jpg',
+            'https://40futov.ru/upload/iblock/b61/plpu9wqzanxsu0x1u64ub7zocnf08yok.jpg',
+            'https://40futov.ru/upload/iblock/4fe/vqoakhheb1nqgljvp7ctoith7lyoo83m.jpg',
+        ],
         description:
           'Мобильная баня с утеплением, парной, душевой и влагостойкой отделкой на базе 20-футового контейнера.',
         specs: [
@@ -2402,7 +2408,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Баня 30 футов',
         categoryId: 'sauna',
         shortDescription: 'Баня с парной, моечной и комнатой отдыха.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/743/1qc0y5znav00a6ag56jtcxb1irdz208x.jpg',
+            'https://40futov.ru/upload/iblock/836/rxieslebmdeis6faptkgs0axoazgf2bw.jpg',
+            'https://40futov.ru/upload/iblock/4b7/rot82tt45ddbo032dem36qe6nkli94g6.jpg',
+            'https://40futov.ru/upload/iblock/337/qy1iqvg0rgfptz914frpajvb6oada7de.jpg',
+        ],
         description:
           'Модульная баня увеличенного формата с отдельной комнатой отдыха и выбором типа печи под задачу заказчика.',
         specs: [
@@ -2416,7 +2427,12 @@ const portalSeeds: Record<string, PortalSeed> = {
         title: 'Баня 40 футов',
         categoryId: 'sauna',
         shortDescription: 'Банный комплекс с зоной отдыха и дополнительными опциями.',
-        images: ['https://s3.datary-dev.ru/'],
+        images: [
+            'https://40futov.ru/upload/iblock/563/l33178nxt6dvkfa84tzt4pyhqu4fpczk.jpg',
+            'https://40futov.ru/upload/iblock/110/lt2971jjh8rod1msf4y2jdzt3z0c71pn.jpg',
+            'https://40futov.ru/upload/iblock/26b/bxj4uep416dq0ptdi48zpg3l2wsywya4.jpg',
+            'https://40futov.ru/upload/iblock/87e/s3g481lyzta4my3c2c3quk6htrf7zt8u.jpg',
+        ],
         description:
           'Большой банный модуль с расширенной парной, зоной отдыха, купелью и опциональным панорамным остеклением.',
         specs: [
@@ -2431,34 +2447,6 @@ const portalSeeds: Record<string, PortalSeed> = {
       { id: 'delivery', title: 'Монтаж и доставка' },
     ],
     services: [
-      {
-        id: 'cont-service-project',
-        title: 'Проектирование планировки',
-        categoryId: 'design',
-        shortDescription: 'Индивидуальная планировка модульного здания по техзаданию.',
-        images: ['https://s3.datary-dev.ru/'],
-        description:
-          'Разрабатываем планировку, подбираем материалы отделки и инженерные решения, готовим визуализацию и смету до запуска производства.',
-        specs: [
-          ['Срок', '3–7 рабочих дней'],
-          ['Результат', 'Планировка, 3D, смета'],
-          ['Правки', 'Две итерации включены'],
-        ],
-      },
-      {
-        id: 'cont-service-delivery',
-        title: 'Доставка и монтаж на площадке',
-        categoryId: 'delivery',
-        shortDescription: 'Перевозка модуля и установка на подготовленное основание.',
-        images: ['https://s3.datary-dev.ru/'],
-        description:
-          'Доставляем модуль, устанавливаем на подготовленное основание, выполняем базовый монтаж и подключение к инженерным сетям по проекту.',
-        specs: [
-          ['География', 'Челябинская область'],
-          ['Монтаж', '1–2 дня'],
-          ['Гарантия', '12 месяцев'],
-        ],
-      },
     ],
     galleryCaption: ['Готовый модуль', 'Интерьер', 'Монтаж на площадке'],
   },

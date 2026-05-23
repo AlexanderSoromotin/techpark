@@ -149,7 +149,7 @@ export const residents: Resident[] = [
     imageAlt: 'Строительные металлоконструкции, профлист и ограждения',
     is_hidden: false,
     phone: '+7 (908) 047-70-30',
-    email: 'mat@1219.ru',
+    email: 'stroy@1219.ru',
   },
   {
     id: '5',
@@ -243,7 +243,7 @@ export const residents: Resident[] = [
     imageAlt: 'Линия розлива автохимии с канистрами и лабораторным оборудованием',
     is_hidden: true,
     phone: '+7 (908) 047-70-30',
-    email: 'chem@tp1219.ru',
+    email: 'info@1219.ru',
   },
   {
     id: '8',
@@ -307,7 +307,7 @@ export const residents: Resident[] = [
     imageAlt: 'Инструментальный цех, штампы и оснастка',
     is_hidden: true,
     phone: '+7 (908) 047-70-30',
-    email: 'tooling@tp1219.ru',
+    email: 'info@1219.ru',
   },
   {
     id: '10',
@@ -368,7 +368,7 @@ export const residents: Resident[] = [
     image: 'https://s3.datary-dev.ru/tp1219/main_content/40futov.jpg',
     imageAlt: 'Контейнерный дом на производственной площадке с модульными блоками',
     is_hidden: false,
-    phone: '+7 (908) 047-70-30',
+    phone: '+7 (925) 440-40-00',
     email: 'info@40futov.ru',
   },
   {
