@@ -218,7 +218,7 @@ export default function Contacts() {
 									type="text"
 									value={form.name}
 									onChange={(e) => setForm({ ...form, name: e.target.value })}
-									placeholder="Иван Петров"
+									placeholder="Александр Попов"
 									className="form-input w-full px-4 py-3 bg-[#F5F7F9] border border-[#D9E1E8] rounded-lg text-[#1F2933] placeholder:text-[#6B7C8F] text-sm"
 								/>
 								{errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
