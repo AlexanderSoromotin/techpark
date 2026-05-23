@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -11,6 +11,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Link2,
+  Check,
 } from 'lucide-react';
 import { getResidentBySlug } from '../data/residents';
 import {
@@ -100,8 +102,32 @@ const EMPTY_PORTAL_CONTENT: ResidentPortalContent = {
   gallery: [],
 };
 
+function CopyLinkButton({ articleId, slug }: { articleId: string; slug: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const url = `${window.location.origin}/resident/${slug}/article/${articleId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className="h-9 px-3 rounded-lg border border-[#D9E1E8] hover:border-[#2F6FED]/30 hover:text-[#2F6FED] flex items-center gap-1.5 text-xs font-semibold transition-colors text-[#6B7C8F]"
+      aria-label="Скопировать ссылку на статью"
+    >
+      {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Link2 className="w-3.5 h-3.5" />}
+      {copied ? 'Скопировано' : 'Ссылка'}
+    </button>
+  );
+}
+
 export default function ResidentPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, articleId: articleIdParam } = useParams<{ slug: string; articleId: string }>();
   const navigate = useNavigate();
   const resident = getResidentBySlug(slug ?? '');
   const portal = useMemo(
@@ -110,7 +136,7 @@ export default function ResidentPage() {
   );
   const [selectedItem, setSelectedItem] = useState<SelectedItemState | null>(null);
   const [selectedItemPhotoIndex, setSelectedItemPhotoIndex] = useState(0);
-  const [openArticleId, setOpenArticleId] = useState<string | null>(null);
+  const [openArticleId, setOpenArticleId] = useState<string | null>(articleIdParam ?? null);
   const [openNewsId, setOpenNewsId] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -133,16 +159,25 @@ export default function ResidentPage() {
   const openArticleBlocks: ArticleContentBlock[] = useMemo(() => {
     if (!openArticle) return [];
     if (openArticle.contentBlocks) return openArticle.contentBlocks;
-    return [
-      { type: 'text' as const, text: openArticle.content },
-    ];
+    if (openArticle.content) return [{ type: 'text' as const, text: openArticle.content }];
+    return [{ type: 'text' as const, text: openArticle.excerpt }];
   }, [openArticle]);
+
+  const openArticleById = useCallback((id: string) => {
+    setOpenArticleId(id);
+    navigate(`/resident/${slug}/article/${id}`, { replace: false });
+  }, [slug, navigate]);
+
+  const closeArticle = useCallback(() => {
+    setOpenArticleId(null);
+    navigate(`/resident/${slug}`, { replace: false });
+  }, [slug, navigate]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (openArticleId) {
-          setOpenArticleId(null);
+          closeArticle();
           return;
         }
         if (openNewsId) {
@@ -175,7 +210,7 @@ export default function ResidentPage() {
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [lightboxIndex, portal.gallery.length, openArticleId, openNewsId]);
+  }, [lightboxIndex, portal.gallery.length, openArticleId, openNewsId, closeArticle]);
 
   const productSections = useMemo(
     () => buildCategorizedSections(portal.productCategories, portal.products, 'Все товары'),
@@ -233,6 +268,7 @@ export default function ResidentPage() {
     selectedItem?.item.relatedArticleIds
       .map((id) => articleById[id])
       .filter((article): article is ResidentKnowledgeArticle => Boolean(article)) ?? [];
+
 
   const openProduct = (item: ResidentCatalogItem) => {
     setSelectedItem({ kind: 'product', item });
@@ -577,8 +613,7 @@ export default function ResidentPage() {
                     <article
                       key={entry.id}
                       className="group rounded-xl border border-[#D9E1E8] hover:border-[#2F6FED]/30 p-4 sm:p-5 grid sm:grid-cols-[160px_1fr] gap-4 cursor-pointer transition-all duration-200 hover:shadow-md"
-                      onClick={() => setOpenNewsId(entry.id)}
-                    >
+                      onClick={() => setOpenNewsId(entry.id)}                    >
                       <div className="overflow-hidden rounded-xl">
                         <img src={entry.image} alt={entry.title} className="w-full h-28 sm:h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       </div>
@@ -609,8 +644,7 @@ export default function ResidentPage() {
                     <article
                       key={article.id}
                       className="group rounded-xl border border-[#D9E1E8] hover:border-[#2F6FED]/30 overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
-                      onClick={() => setOpenArticleId(article.id)}
-                    >
+                      onClick={() => openArticleById(article.id)}                    >
                       <div className="h-36 overflow-hidden">
                         <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                       </div>
@@ -862,7 +896,7 @@ export default function ResidentPage() {
                         key={article.id}
                         type="button"
                         onClick={() => {
-                          setOpenArticleId(article.id);
+                          openArticleById(article.id);
                           setSelectedItem(null);
                         }}
                         className="w-full text-left rounded-xl border border-[#D9E1E8] hover:border-[#2F6FED]/30 px-3 py-2 transition-colors"
@@ -945,32 +979,20 @@ export default function ResidentPage() {
                   </div>
                   <h3 className="text-lg font-black text-[#1F2933] truncate">{openArticle.title}</h3>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setOpenArticleId(null)}
-                  className="w-9 h-9 rounded-lg border border-[#D9E1E8] hover:border-[#2F6FED]/30 hover:text-[#2F6FED] flex items-center justify-center transition-colors shrink-0"
-                  aria-label="Закрыть статью"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-2 shrink-0">
+                  <CopyLinkButton articleId={openArticle.id} slug={slug ?? ''} />
+                  <button
+                    type="button"
+                    onClick={closeArticle}
+                    className="w-9 h-9 rounded-lg border border-[#D9E1E8] hover:border-[#2F6FED]/30 hover:text-[#2F6FED] flex items-center justify-center transition-colors"
+                    aria-label="Закрыть статью"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               <div className="p-6 sm:p-8">
-                <img
-                  src={openArticle.image}
-                  alt={openArticle.title}
-                  className="w-full h-56 sm:h-72 object-cover rounded-xl mb-8"
-                />
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {openArticle.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-semibold bg-[#E6EEF8] text-[#4A7FF0]">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <h2 className="text-2xl sm:text-3xl font-black text-[#1F2933] leading-tight mb-6">{openArticle.title}</h2>
 
                 <div className="space-y-5">
                   {openArticleBlocks.map((block, blockIndex) =>

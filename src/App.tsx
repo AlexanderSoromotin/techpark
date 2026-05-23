@@ -33,6 +33,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/resident/:slug" element={<ResidentPage />} />
+          <Route path="/resident/:slug/article/:articleId" element={<ResidentPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
