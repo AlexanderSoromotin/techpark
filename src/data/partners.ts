@@ -12,7 +12,7 @@ export const partners: Partner[] = [
     name: 'BLMA',
     description: 'Высококачественные станки для обработки листового металла',
     logo: 'http://s3.datary-dev.ru/tp1219/partners/BLMA (1).webp',
-    url: 'http://ru.blmagroup.com/',
+    url: 'https://www.blmamachinery.com/',
   },
 ];
 
