@@ -14,6 +14,13 @@ export const partners: Partner[] = [
     logo: 'http://s3.datary-dev.ru/tp1219/partners/BLMA (1).webp',
     url: 'https://www.blmamachinery.com/',
   },
+  {
+    id: 'feitian',
+    name: 'ФЭЙТЯНЬ',
+    description: 'Высококачественное профилегибочное оборудование',
+    logo: 'http://s3.datary-dev.ru/tp1219/partners/rfmtf (1).png',
+    url: 'https://rfmtf.ru/',
+  },
 ];
 
 
