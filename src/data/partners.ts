@@ -21,6 +21,13 @@ export const partners: Partner[] = [
     logo: 'http://s3.datary-dev.ru/tp1219/partners/rfmtf (1).png',
     url: 'https://rfmtf.ru/',
   },
+    {
+    id: 'bcamcnc',
+    name: 'BCAMCNC',
+    description: 'Высококачественное промышленное оборудование с ЧПУ',
+    logo: 'http://s3.datary-dev.ru/tp1219/partners/hd_crop_1d328bb570ad59dd65910910f6bc4968.jpg',
+    url: 'https://rfmtf.ru/',
+  },
 ];
 
 
