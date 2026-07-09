@@ -525,7 +525,7 @@ const portalSeeds: Record<string, PortalSeed> = {
           ['Режим работы', 'Непрерывный 24/7'],
           ['Назначение', 'УЗВ, форелевые и осетровые хозяйства'],
         ],
-        images: ['https://s3.datary-dev.ru/tp1219/articles/i%20(3).webp'],
+        images: ['https://s3.datary-dev.ru/tp1219/articles/ChatGPT%20Image%209%20%D0%B8%D1%8E%D0%BB.%202026%20%D0%B3.%2C%2014_52_31.png'],
       },
       {
         id: 'metal-uzv-2',
@@ -544,7 +544,7 @@ const portalSeeds: Record<string, PortalSeed> = {
           ['Режим работы', 'Непрерывный 24/7'],
           ['Назначение', 'УЗВ, форелевые, лососевые и осетровые хозяйства'],
         ],
-        images: ['https://s3.datary-dev.ru/tp1219/articles/i%20(4).webp'],
+        images: ['https://s3.datary-dev.ru/tp1219/articles/ChatGPT%20Image%209%20%D0%B8%D1%8E%D0%BB.%202026%20%D0%B3.%2C%2014_51_08.png'],
       },
     ],
     serviceCategories: createCategories([
