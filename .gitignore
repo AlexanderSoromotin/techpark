@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# Готовые PDF-отчёты (собираются скриптом)
+tools/reports/out/
