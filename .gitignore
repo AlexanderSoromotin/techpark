@@ -27,3 +27,4 @@ dist-ssr
 
 # Готовые PDF-отчёты (собираются скриптом)
 tools/reports/out/
+tools/proposals/out/
